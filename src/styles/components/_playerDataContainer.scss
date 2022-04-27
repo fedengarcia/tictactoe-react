@@ -1,0 +1,35 @@
+.player-data-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: auto;
+    border: 1px solid black;
+
+    form{
+        width: 100%;
+        padding: 1em;
+
+        .input-span {
+            width: auto;
+            margin: 1em;
+            input{
+                height: 3vh;
+                width: 100%;
+            }
+        }
+    }
+
+    .form-actions{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            font-size: 2.5vh;
+            margin: 1em; 
+            padding: 0.3em;
+        }
+
+    }
+}

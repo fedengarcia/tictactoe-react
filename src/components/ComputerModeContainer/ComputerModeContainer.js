@@ -1,9 +1,15 @@
 import React from 'react'
+import PlayerDataContainer from '../PlayerDataContainer/PlayerDataContainer'
 
 
 
 export default function ComputerModeContainer () {
+    
 
-
-    return(<h1>Computer Mode</h1>)
+    return(
+    <div>
+        <h1>Computer Mode</h1>
+        <PlayerDataContainer/>
+    </div>
+    )
 }
