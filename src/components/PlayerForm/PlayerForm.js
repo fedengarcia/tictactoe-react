@@ -1,54 +1,59 @@
-import React, {useState,useEffect} from 'react';
-import {NavLink, useLocation} from 'react-router-dom';
-import { useForm } from "react-hook-form";
+import React, {useState,useContext} from 'react';
+import {NavLink, useNavigate} from 'react-router-dom';
+import {UseGameContext} from '../../context/GameContext';
 
-export default function PlayerForm ({setPlay}) {
-    const [playerOneName,setPlayerOneName] = useState("");
-    const [playerTwoName,setPlayerTwoName] = useState("");
+export default function PlayerForm ({gameType}) {
+    const [errorName,setErrorName]=useState(false)
 
-    const [errorName,setErrorName]=useState(true)
-    
-
-    const location = useLocation()    
-
+    const navigate = useNavigate();
+    const {setPlayers,players} = useContext(UseGameContext)
 
     const handlePlayerOneData = (e) => {
-        setPlayerOneName(e.target.value)
-        if(playerOneName === ""){
-            console.log(playerOneName)
-            console.log("Vacio")
-            setErrorName(true);
-        }
+        setPlayers({...players,playerOne:{
+            name:e.target.value,
+            puntos: 0,
+        }})
     }
+    
     const handlePlayerTwoData = (e) => {
-        
-        setPlayerTwoName(e.target.value)
-        if(playerTwoName === ""){
-            setErrorName(true);
-        }
+        setPlayers({...players,playerTwo:{
+            name:e.target.value,
+            puntos: 0,
+        }})
     }
+
 
     const handlePlay = () => {
-        if(location.pathname === "/MultiplayerMode"){
-            
-        }else if(location.pathname === "/ComputerMode"){
-            if(playerOneName === ""){
-                console.log(playerOneName)
-                setErrorName(true);
-            }
-        }
-        
 
-        if(errorName){
-            //SetLocalStorage
-            //Save Info Firebase
-            setPlay(true);
+           
+        if(gameType === "Multiplayer"){
+            if((players.playerOne === undefined || players.playerTwo === undefined)){
+                console.log("Error faltan nombres")
+                setErrorName(true);
+            }else if((players.playerOne.name === "" || players.playerTwo.name === "") ){
+                console.log("Error faltan nombres")
+                setErrorName(true);
+            }else{
+                    //GUARDO DATOS EN LOCAL STORAGE
+                    navigate("/Game/Multiplayer");
+            }
+
+        }else if(gameType === "Computer"){
+            if(players.playerOne.name  === "" || players.playerOne  === undefined){
+                console.log("Error faltan nombre")
+                setErrorName(true);
+            }else{
+                //GUARDO DATOS EN LOCAL STORAGE
+                navigate("/Game/Computer");
+            }
         }
 
     }
 
-    return (
+    return (<>
         <form className='form-player-data'>
+        {gameType === "Multiplayer" ? <h2>Ingrese los nombres de los jugadores</h2> : <h2>Ingrese nombre del jugador</h2>}
+
             <div className="input-span">
                     <input className="form-input" 
                     type="text" 
@@ -57,22 +62,21 @@ export default function PlayerForm ({setPlay}) {
                     onChangeCapture={handlePlayerOneData}
                     />
             </div>
-            {location.pathname === "/MultiplayerMode" ? <div className="input-span">
+            {gameType === "Multiplayer" ? <div className="input-span">
                     <input className="form-input" 
                     type="text" 
                     placeholder='Nombre Jugador 2'
                     id="playerTwoNameid"
                     onChangeCapture={handlePlayerTwoData}
                     />	
-            </div> : <></>}
-            {errorName === false ? <span><p>Debe ingresar nombre/s</p></span> : <></>}
-            
-            <div className='form-actions'>
-            <NavLink to="/" className="nav-link-button"><button>Volver atras</button></NavLink>
-            <button className="boton-validar" onClick={handlePlay}>JUGAR</button>
-
-            </div>
+            </div> : <></>}           
 
         </form>
+        {errorName && <p>Recuerda ingresar nombre/s</p>}
+        <div className='form-actions'>
+            <NavLink to="/" className="nav-link-button"><button>VOLVER ATRAS</button></NavLink>
+            <button className="boton-validar" onClick={handlePlay}>JUGAR</button>
+        </div>
+        </>
     )
 }

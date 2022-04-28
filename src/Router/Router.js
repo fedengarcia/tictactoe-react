@@ -1,9 +1,9 @@
 import React from 'react'
 import {Route,Routes,BrowserRouter} from 'react-router-dom';
-import ComputerModeContainer from '../components/ComputerModeContainer/ComputerModeContainer';
-import MultiplayerModeContainer from '../components/MultiplayerModeContainer/MultiplayerModeContainer';
-import SelectModeContainer from '../components/SelectModeContainer/SelecModeContainer';
+import GameModeContainer from '../components/GameMode/GameModeContainer';
 import RankingContainer from '../components/RankingContainer/RankingContainer';
+import TicTacToe from '../components/TicTacToe/TicTacToe';
+import PlayerInfoContainer from '../components/PlayerInfo/PlayerInfoContainer';
 
 const Router = () => {
 
@@ -11,9 +11,9 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path='/' element={<SelectModeContainer/>}/>
-                <Route path='/MultiplayerMode' element={<MultiplayerModeContainer/>}/>
-                <Route path='/ComputerMode' element={<ComputerModeContainer/>}/>
+                <Route exact path='/' element={<GameModeContainer/>}/>
+                <Route path='/PlayerInfo/:gameType' element={<PlayerInfoContainer/>}/>
+                <Route path='/Game/:gameType' element={<TicTacToe/>}/>
                 <Route path='/Ranking' element={<RankingContainer/>}/>
             </Routes>
 
