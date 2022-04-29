@@ -20,6 +20,7 @@ export default function PlayerInfoContainer () {
                 <PlayerForm setError={setError}/>
             </div>
             
+            
             {error && <div className='error-container'>
                 {gameType === "Multiplayer" ? <p>Debes ingresar los nombres para jugar</p>
                 : <p>Debes ingresar un nombre para jugar</p>
