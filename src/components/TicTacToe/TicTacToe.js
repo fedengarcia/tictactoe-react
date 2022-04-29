@@ -1,14 +1,18 @@
-import React from 'react';
-
-
+import React, { useState, useContext } from 'react';
+import { UseGameContext } from '../../context/GameContext';
 
 export default function TicTacToe () {
+    const [play, setPlay] = useState(false);
+    const {players,gameType} = useContext(UseGameContext)
 
+    return (<div>
+       <h1>{gameType}</h1>
+        {/* {play === false
+         ? <StartGame setPlay={setPlay}/>
+         : <Tablero />
 
+        } */}
 
-    return (
-        <div className='tictactoe-container'>
-            <h1>Comienza el juego</h1>
-        </div>
+    </div>
     )
 }
