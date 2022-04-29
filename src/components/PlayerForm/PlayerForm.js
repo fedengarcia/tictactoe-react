@@ -10,16 +10,12 @@ export default function PlayerForm ({setError}) {
     const handlePlayerO_Data = (e) => {
         setPlayers({...players,playerOne:{
             name:e.target.value,
-            puntos: 0,
-            playerType:"O",
         }})
     }
     
     const handlePlayerX_Data = (e) => {
         setPlayers({...players,playerTwo:{
             name:e.target.value,
-            puntos: 0,
-            playerType:"X",
         }})
     }
 
