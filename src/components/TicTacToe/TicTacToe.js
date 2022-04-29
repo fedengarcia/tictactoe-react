@@ -1,19 +1,20 @@
 import React, { useState, useContext } from 'react';
 import { UseGameContext } from '../../context/GameContext';
-import StartGameView from '../StartGameComponent/StartGameView';
-import Tablero from '../TableroComponent/Tablero';
+import Tablero from '../Tablero/Tablero';
+import GameFinishView from '../GameFinishComponent/GameFinishView';
+
 
 export default function TicTacToe () {
-    const [play, setPlay] = useState(false);
+    const [play, setPlay] = useState(true);
     const {players,gameType} = useContext(UseGameContext)
-
+    
+    
     return (
     <div className="game-container">
-       <h1>{gameType}</h1>
+       <h1>Tipo de juego: {gameType}</h1>
         {play === false
-         ? <StartGameView setPlay={setPlay}/>
-         : <Tablero players={players}/>
-
+         ? <GameFinishView setPlay={setPlay}/>
+         : <Tablero players={players} gameType={gameType}/>
         }
 
     </div>
