@@ -4,6 +4,7 @@ import GameModeContainer from '../components/GameModeComponent/GameModeContainer
 import RankingContainer from '../components/RankingContainer/RankingContainer';
 import TicTacToe from '../components/TicTacToe/TicTacToe';
 import PlayerInfoContainer from '../components/PlayerInfo/PlayerInfoContainer';
+import GameRulesContainer from '../components/GameRulesComponent/GameRulesContainer';
 
 const Router = () => {
 
@@ -14,6 +15,7 @@ const Router = () => {
                 <Route exact path='/' element={<GameModeContainer/>}/>
                 <Route path='/PlayerInfo/:gameType' element={<PlayerInfoContainer/>}/>
                 <Route path='/Game/:gameType' element={<TicTacToe/>}/>
+                <Route path='/Rules' element={<GameRulesContainer/>}/>
                 <Route path='/Ranking' element={<RankingContainer/>}/>
             </Routes>
 

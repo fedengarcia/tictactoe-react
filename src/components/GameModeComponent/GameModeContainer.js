@@ -11,6 +11,7 @@ export default function GameModeContainer () {
             <h1>Elige el modo de juego</h1>
             <NavLink  to="/PlayerInfo/Multiplayer" className="nav-link-button">Multijugador</NavLink>
             <NavLink  to="/PlayerInfo/Computer" className="nav-link-button">Computadora</NavLink>
+            <NavLink  to="/Rules" className="nav-link-button">Reglas de puntos</NavLink>
             <NavLink  to="/Ranking" className="nav-link-button">Ver Ranking</NavLink>
         </div>
 
