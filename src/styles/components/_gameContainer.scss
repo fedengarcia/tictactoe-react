@@ -5,4 +5,54 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    h1{
+        font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: 1em;
+    }
+
+    .timer-container{
+        width: 80%;
+        text-align: center;
+    }
+
+    .players-container{
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 1em;
+        h2{
+            padding: 1em;
+        }
+    }
+
+    .tablero-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid black;
+        width: 80%;
+        height: 50vh;
+
+    }
+
+    .game-finish-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid black;
+        width: 50%;
+        height: 50vh;
+
+        button{
+            width: 50%;
+            padding: 1em;
+            margin: 1em;
+            cursor: pointer;
+        }
+    }
+
 }
