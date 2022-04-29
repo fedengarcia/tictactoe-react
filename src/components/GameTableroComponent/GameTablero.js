@@ -1,3 +1,4 @@
+import React from 'react'
 import GameTableroBox from "../GameTableroBoxComponent/GameTableroBox";
 
 

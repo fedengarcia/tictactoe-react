@@ -75,7 +75,7 @@ export default function PlayerForm ({setError}) {
 
         </form>
         <div className='form-actions'>
-            <NavLink to="/" className="nav-link-button"><button>VOLVER ATRAS</button></NavLink>
+            <NavLink to="/" className="nav-link-button"><button>VOLVER AL MENU</button></NavLink>
             <button className="boton-validar" onClick={handlePlay}>JUGAR</button>
         </div>
         </>

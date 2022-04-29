@@ -56,7 +56,7 @@ export default function TicTacToe () {
         <div className="game-container">
         <h1>Tipo de juego: {gameType}</h1>
             {play === false
-            ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero}/>
+            ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero} gameType={gameType}/>
             : <>
                 
                 <GameTimer timer={timer} setTimer={setTimer}/>
