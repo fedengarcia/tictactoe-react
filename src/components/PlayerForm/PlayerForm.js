@@ -1,52 +1,58 @@
-import React, {useState,useContext} from 'react';
+import React, {useContext} from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import {UseGameContext} from '../../context/GameContext';
 
-export default function PlayerForm ({gameType}) {
-    const [errorName,setErrorName]=useState(false)
+export default function PlayerForm ({setError}) {
 
     const navigate = useNavigate();
-    const {setPlayers,players} = useContext(UseGameContext)
+    const {setPlayers,players,gameType} = useContext(UseGameContext)
 
-    const handlePlayerOneData = (e) => {
+    const handlePlayerO_Data = (e) => {
         setPlayers({...players,playerOne:{
             name:e.target.value,
             puntos: 0,
+            playerType:"O",
         }})
     }
     
-    const handlePlayerTwoData = (e) => {
+    const handlePlayerX_Data = (e) => {
         setPlayers({...players,playerTwo:{
             name:e.target.value,
             puntos: 0,
+            playerType:"X",
         }})
     }
 
 
     const handlePlay = () => {
-
-           
+        //VERIFICA TIPO DE JUEGO Y SI HAY NOMBRE DE JUGADOR
         if(gameType === "Multiplayer"){
             if((players.playerOne === undefined || players.playerTwo === undefined)){
-                console.log("Error faltan nombres")
-                setErrorName(true);
+
+                setError(true);
+
             }else if((players.playerOne.name === "" || players.playerTwo.name === "") ){
-                console.log("Error faltan nombres")
-                setErrorName(true);
+                
+                setError(true);
+
             }else{
-                    //GUARDO DATOS EN LOCAL STORAGE
-                    navigate("/Game/Multiplayer");
+                navigate("/Game/Multiplayer");
             }
 
         }else if(gameType === "Computer"){
-            if(players.playerOne.name  === "" || players.playerOne  === undefined){
-                console.log("Error faltan nombre")
-                setErrorName(true);
+            if( players.playerOne  === undefined){
+
+                setError(true);
+
+            }else if(players.playerOne.name  === ""){
+
+                setError(true);
+
             }else{
-                //GUARDO DATOS EN LOCAL STORAGE
                 navigate("/Game/Computer");
             }
         }
+           
 
     }
 
@@ -57,22 +63,21 @@ export default function PlayerForm ({gameType}) {
             <div className="input-span">
                     <input className="form-input" 
                     type="text" 
-                    placeholder='Nombre Jugador 1'
-                    id="playerOneNameid"
-                    onChangeCapture={handlePlayerOneData}
+                    placeholder='Nombre Jugador O'
+                    id="playerONameid"
+                    onChangeCapture={handlePlayerO_Data}
                     />
             </div>
             {gameType === "Multiplayer" ? <div className="input-span">
                     <input className="form-input" 
                     type="text" 
-                    placeholder='Nombre Jugador 2'
-                    id="playerTwoNameid"
-                    onChangeCapture={handlePlayerTwoData}
+                    placeholder='Nombre Jugador X'
+                    id="playerXNameid"
+                    onChangeCapture={handlePlayerX_Data}
                     />	
             </div> : <></>}           
 
         </form>
-        {errorName && <p>Recuerda ingresar nombre/s</p>}
         <div className='form-actions'>
             <NavLink to="/" className="nav-link-button"><button>VOLVER ATRAS</button></NavLink>
             <button className="boton-validar" onClick={handlePlay}>JUGAR</button>
