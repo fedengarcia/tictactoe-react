@@ -13,3 +13,5 @@ export default function GameTablero ({handlePlay,tablero}) {
         </div>
     )
 }
+
+
