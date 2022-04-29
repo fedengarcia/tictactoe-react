@@ -53,7 +53,7 @@ export default function PlayerForm ({setError}) {
     }
 
     return (<>
-        <form className='form-player-data'>
+        <form>
         {gameType === "Multiplayer" ? <h2>Ingrese los nombres de los jugadores</h2> : <h2>Ingrese nombre del jugador</h2>}
 
             <div className="input-span">

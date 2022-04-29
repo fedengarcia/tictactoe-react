@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom';
 import { UseGameContext } from '../../context/GameContext';
+import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 import PlayerForm from '../PlayerForm/PlayerForm';
 
 
@@ -13,8 +14,13 @@ export default function PlayerInfoContainer () {
         setGameType(gameType)
     }, [setGameType,gameType]);
 
-    return(
-        <div className='player-info-container'>
+    useEffect(() => {
+        setTimeout(() => {
+            setError(false);
+        }, 2000);
+    }, [error]);
+
+    return(<ActionViewContainer>
             <h1>{`${gameType} Mode`}</h1>
             <div className='player-form-container'>
                 <PlayerForm setError={setError}/>
@@ -27,6 +33,7 @@ export default function PlayerInfoContainer () {
                 }
             </div>}
             
-        </div>
+        
+        </ActionViewContainer>
     )
 }

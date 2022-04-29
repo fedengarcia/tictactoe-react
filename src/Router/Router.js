@@ -3,7 +3,7 @@ import {Route,Routes,BrowserRouter} from 'react-router-dom';
 import GameModeContainer from '../components/GameModeComponent/GameModeContainer';
 import RankingContainer from '../components/RankingContainer/RankingContainer';
 import TicTacToe from '../components/TicTacToe/TicTacToe';
-import PlayerInfoContainer from '../components/PlayerInfo/PlayerInfoContainer';
+import PlayerInfoContainer from '../components/GetPlayersDataComponent/PlayerInfoContainer';
 import GameRulesContainer from '../components/GameRulesComponent/GameRulesContainer';
 
 const Router = () => {

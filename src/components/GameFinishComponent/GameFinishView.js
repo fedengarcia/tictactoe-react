@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate} from 'react-router-dom';
-
-
+import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 
 
 
@@ -22,21 +21,22 @@ export default function GameFinishView ({setPlay, setTablero,tablero, winner,gam
         }
     }
 
-    return (
-        <div className="game-finish-container">
-            {winner.name !== "Computer" 
-            ? 
-                <>
+    return (<ActionViewContainer>
+            <div className="game-finish-container">
+                {winner.name !== "Computer" 
+                ? 
+                    <>
+                        <h2>{`Ganador: ${winner.name}`}</h2>
+                        <h2>{`Haz sumado: ${winner.points} puntos a tu historial`}</h2>
+                    </>
+                : 
                     <h2>{`Ganador: ${winner.name}`}</h2>
-                    <h2>{`Haz sumado: ${winner.points} puntos a tu historial`}</h2>
-                </>
-            : 
-                <h2>{`Ganador: ${winner.name}`}</h2>
-            }
-            {!winner.name && <h2>Empate</h2>}
-            <button onClick={handlePlay}>JUGAR DE NUEVo</button>
-            <button onClick={() => handleRoute("jugadores")}>CAMBIAR JGUADORES</button>
-            <button onClick={() => handleRoute("menu")}>VOLVER AL MENU</button>
-        </div>
+                }
+                {!winner.name && <h2>Empate</h2>}
+                <button onClick={handlePlay}>JUGAR DE NUEVO</button>
+                <button onClick={() => handleRoute("jugadores")}>CAMBIAR JGUADORES</button>
+                <button onClick={() => handleRoute("menu")}>VOLVER AL MENU</button>
+            </div>
+        </ActionViewContainer>
     )
 }
