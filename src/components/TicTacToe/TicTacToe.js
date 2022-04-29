@@ -7,16 +7,16 @@ import GameTimer from '../GameTimerComponent/GameTimer';
 import GamePlayer from '../GamePlayersComponent/GamePlayer';
 import { checkWinner } from '../helper';
 
-
 export default function TicTacToe () {
     const [play, setPlay] = useState(true);
-    const [timer,setTimer] = useState(undefined);
+    // const [timer,setTimer] = useState(undefined);
     const [turnoJugador,setTurnoJugador] = useState("");
     const [tablero,setTablero] = useState(["","","","","","","","",""])
 
     const {players,gameType,} = useContext(UseGameContext)
-    const winner = checkWinner(tablero,players);
+    const winner = checkWinner(tablero,players, gameType);
 
+    // ELIJO AL AZAR QUIEN COMIENZA EL JUEGo
     useEffect(() => {
         
         if (Math.floor(Math.random()*["O","X"].length) === 0){
@@ -27,7 +27,25 @@ export default function TicTacToe () {
         
     }, []);
 
+    //JUEGA LA COMPUTADORA
+    useEffect(() => {            
+        if(turnoJugador === "X" && gameType==="Computer"){
+            var tableroCopy =  tablero.slice();
+            var randomPosition = Math.floor(Math.random()*tableroCopy.length);
+            
 
+            while (tableroCopy[randomPosition] !== ""){
+                randomPosition = Math.floor(Math.random()*tableroCopy.length);
+            } 
+            tableroCopy[randomPosition] = turnoJugador;
+            setTablero(tableroCopy);
+            setTurnoJugador("O")
+        }
+        
+
+    }, [turnoJugador,tablero]);
+
+    // CHEQUEO SI HAY UN GANADOR PARA PARAR EL JUEGO
     useEffect(() => {
         if(winner){
             setPlay(false);
@@ -37,19 +55,20 @@ export default function TicTacToe () {
 
 
     const handlePlay = (position) => {
-        const tableroCopy =  tablero.slice();
-        if(tableroCopy[position] === ""){
-            tableroCopy[position] =  turnoJugador;
-            setTablero(tableroCopy);
+        var tableroCopy =  tablero.slice();
 
+        if(tableroCopy[position] === ""){
+            tableroCopy[position] = turnoJugador;
+            setTablero(tableroCopy);
             if(turnoJugador === "X"){
                 setTurnoJugador("O");
             }else{
                 setTurnoJugador("X");
             }
+    
         }
-        
-        
+
+
     }
 
     return (
@@ -59,7 +78,7 @@ export default function TicTacToe () {
             ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero} gameType={gameType}/>
             : <>
                 
-                <GameTimer timer={timer} setTimer={setTimer}/>
+                {/* <GameTimer timer={timer} setTimer={setTimer}/> */}
                 
                 <GamePlayer players={players} gameType={gameType}/>
             

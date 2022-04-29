@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 
 
@@ -14,19 +14,29 @@ export default function GameFinishView ({setPlay, setTablero,tablero, winner,gam
         setPlay(true);
     }
 
-    const handleRoute = () => {
-        navigate(`/PlayerInfo/${gameType}`);
+    const handleRoute = (value) => {
+        if(value === "jugadores"){
+            navigate(`/PlayerInfo/${gameType}`);
+        }else{
+            navigate(`/`);
+        }
     }
 
     return (
         <div className="game-finish-container">
-            {winner.name && 
-                <><h2>{`Ganador: ${winner.name}`}</h2>
-                <h2>{`Haz sumado: ${winner.points} puntos a tu historial`}</h2>
-                </>}
+            {winner.name !== "Computer" 
+            ? 
+                <>
+                    <h2>{`Ganador: ${winner.name}`}</h2>
+                    <h2>{`Haz sumado: ${winner.points} puntos a tu historial`}</h2>
+                </>
+            : 
+                <h2>{`Ganador: ${winner.name}`}</h2>
+            }
             {!winner.name && <h2>Empate</h2>}
-            <button onClick={handlePlay}>Jugar de nuevo</button>
-            <button onClick={handleRoute}>Cambiar jugadores</button>
+            <button onClick={handlePlay}>JUGAR DE NUEVo</button>
+            <button onClick={() => handleRoute("jugadores")}>CAMBIAR JGUADORES</button>
+            <button onClick={() => handleRoute("menu")}>VOLVER AL MENU</button>
         </div>
     )
 }

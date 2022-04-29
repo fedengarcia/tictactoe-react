@@ -1,6 +1,6 @@
 
 
-export function checkWinner (tablero,players) {
+export function checkWinner (tablero,players, gameType) {
     const winnerPatterns = [
         [0,1,2],
         [3,4,5],
@@ -31,17 +31,22 @@ export function checkWinner (tablero,players) {
                 points = 1
             }
             
+
             if(tablero[a] === "O"){
                 return ({
                     name: players.playerOne.name,
                     points: points,
                     playerType: tablero[a],
                 })    
-            }else{
+            }else if(gameType === "Multiplayer"){
                 return ({
                     name: players.playerTwo.name,
                     points: points,
                     playerType: tablero[a],
+                }) 
+            }else{
+                return ({
+                    name: "Computer",
                 }) 
             }
            
