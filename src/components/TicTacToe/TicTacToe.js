@@ -3,7 +3,6 @@ import { UseGameContext } from '../../context/GameContext';
 import GameTablero from '../GameTableroComponent/GameTablero';
 import GameFinishView from '../GameFinishComponent/GameFinishView';
 import GameTurno from '../GameTurnoComponent/GameTurno';
-// import GameTimer from '../GameTimerComponent/GameTimer';
 import GamePlayer from '../GamePlayersComponent/GamePlayer';
 import { checkWinner } from '../helper';
 import { addWinnerPlayer,updatePlayerPointsAndWins } from '../../firebase/FirebaseClient';
@@ -11,10 +10,8 @@ import { addWinnerPlayer,updatePlayerPointsAndWins } from '../../firebase/Fireba
 
 export default function TicTacToe () {
     const [play, setPlay] = useState(true);
-    // const [timer,setTimer] = useState(undefined);
     const [turnoJugador,setTurnoJugador] = useState("X");
     const [tablero,setTablero] = useState(["","","","","","","","",""])
-
     const {players,gameType,} = useContext(UseGameContext)
     const winner = checkWinner(tablero,players, gameType);
 
@@ -50,7 +47,7 @@ export default function TicTacToe () {
     // CHEQUEO SI HAY UN GANADOR PARA PARAR EL JUEGO
     useEffect(() => {
         if(winner){
-            addWinnerPlayer(winner);
+            addWinnerPlayer(winner,gameType);
             setPlay(false);
         }
     }, [winner]);

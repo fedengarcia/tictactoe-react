@@ -5,12 +5,8 @@ import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer
 export default function GameFinishView ({setPlay, setTablero,tablero, winner,gameType}) {
     const navigate = useNavigate();
 
-
-
-
     const handlePlay = () =>{
         setTablero(tablero.fill(""))
-        // GUARDAR EN FIREBASE PUNTOS DEL GANADOR
         setPlay(true);
     }
 

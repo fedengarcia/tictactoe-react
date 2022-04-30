@@ -7,7 +7,7 @@ import { UseGameContext } from "../../context/GameContext";
 
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
-    const {winnersRanking, setLoadModel,loadModel,setWinnersDB} = useContext(UseGameContext);
+    const {winnersRanking, setLoadModel,loadModel,setWinnersDB,clearRanking} = useContext(UseGameContext);
 
     const navigate = useNavigate();
 
@@ -21,31 +21,56 @@ export default function RankingContainer () {
 
 
 
-    const handleClick = () => {
-        navigate("/");
+    const handleClick = (value) => {
+        if(value === "menu"){
+            clearRanking();
+            navigate("/");
+        }else{
+            navigate("EstadisticasAvanzadas");
+        }
+
     }
 
     return (
     <ActionsViewContainer>
-    <div className="ranking-container">
-        <h1>Ranking por puntos</h1>
-        <div className="ranking-grid">
-            <div className="ranking-grid-item-title"><h2>Name</h2></div>
-            <div className="ranking-grid-item-title"><h2>Wins</h2></div>
-            <div className="ranking-grid-item-title"><h2>Points</h2></div>
+        <div className="rank-title">
+            <h1>Ranking por puntos</h1>
         </div>
-        {loader === true ? <Loader/> 
-        : winnersRanking.map((winner,i) => 
-            <div key={i} className="winners-grid">
-                <div className="winners-grid-item-player"><h2>{winner.name}</h2></div>
-                <div className="winners-grid-item-player"><h2>{winner.wins}</h2></div>
-                <div className="winners-grid-item-player"><h2>{winner.points}</h2></div>
-            </div>)
-        }
 
-    <button onClick={handleClick}>VOLVER AL MENU</button>
+        <div className="ranking-container">
+            
+            <div className="ranking-grid rankmob">
+                <div className="ranking-grid-item-title"><h2>Name</h2></div>
+                <div className="ranking-grid-item-title"><h2>Wins</h2></div>
+                <div className="ranking-grid-item-title"><h2>Points</h2></div>
+                <div className="ranking-grid-item-title"><h2>Game Type</h2></div>
+                {/* <div className="winners-grid-item-title"><h2>PlayerType</h2></div> */}
 
-    </div>
+            </div>
+            {loader === true ? <Loader/> 
+            : <>{winnersRanking !== [] ? winnersRanking.map((winner,i) => 
+                    <div key={i} className="winners-grid rankmob">
+                        <div className="winners-grid-item-player"><h3>{winner.name}</h3></div>
+                        <div className="winners-grid-item-player"><h3>{winner.wins}</h3></div>
+                        <div className="winners-grid-item-player"><h3>{winner.points}</h3></div>
+                        <div className="winners-grid-item-player"><h3>{winner.gameType}</h3></div>
+                        {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
+                    </div>)
+                : <h3>Todavia no se han jugado partidas</h3>    
+                }
+            </>
+            }
+
+
+        </div>
+
+        <div className="ranking-action-button">
+            <button onClick={() => handleClick("menu")}>VOLVER AL MENU</button>
+            <button onClick={handleClick}>ESTADISTICAS AVANZADAS</button>
+        </div>
+        
+
+
     </ActionsViewContainer>
     )
 }

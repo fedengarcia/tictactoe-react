@@ -17,16 +17,15 @@ export function GameContext ({children}) {
 
 
     //DEVUELVE -1 SI NO EXISTE EL ITEM
-    const getWinnerIndex = (name) =>{
-        const position = winnersRanking.findIndex(item => item.name === name);
+    const getWinnerIndex = (name,gameType) =>{
+        const position = winnersRanking.findIndex(item => (item.name === name && item.gameType === gameType)); //&& item.playerType === playerType
         return position;
-        // return winnersRanking.findIndex(winner => winner.name === name);
     }
 
+    //MODELO DATOS PARA EL RANK DE GANADORES
     const modelDataRanking = (winner) => {
 
-        let result = getWinnerIndex(winner.name);
-        console.log(result)
+        let result = getWinnerIndex(winner.name,winner.gameType);
         if(result === -1){
             winnersRanking.push(winner);
             // setWinnersRanking(winnersRanking => [...winnersRanking,winner])
@@ -36,12 +35,16 @@ export function GameContext ({children}) {
             winnersRankingCopy[result]["wins"] = winnersRankingCopy[result]["wins"] + 1;
             setWinnersRanking(winnersRankingCopy);
         }
-        console.log(winnersRanking)
+    }
+
+
+    const clearRanking = () => {
+        setWinnersRanking([]);
     }
 
 
     return(
-    <UseGameContext.Provider value={{winnersRanking,setLoadModel,loadModel,setWinnersDB,setPlayers,players,gameType,setGameType}}>
+    <UseGameContext.Provider value={{clearRanking,winnersRanking,setLoadModel,loadModel,setWinnersDB,setPlayers,players,gameType,setGameType}}>
         {children}
     </UseGameContext.Provider>)
 }

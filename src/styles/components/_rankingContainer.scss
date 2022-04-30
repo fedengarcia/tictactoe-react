@@ -1,29 +1,67 @@
 .ranking-container{
-    width: 50%;
-    height: 70vh;
+    width: 80%;
+    height: 60vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     border-radius: 2em;
     border: 2px solid #1f1f70;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
+    background-color: rgb(234, 190, 135);
 
+    .rank-title{
+        width: 80%;
+        text-align: center;
+        margin-bottom: 1em;
+
+
+    }
+
+    .ranking-grid {
+        border-bottom: 1px solid #1f1f70;
+        margin-bottom: 1em;
+    }
 
     button{
         margin-top: 4em;
     }
+    h2{
+        margin-top: 1em;
+        font-size: 3vh;
+        font-family: Arial, Helvetica, sans-serif;
 
+    }
+    h3{
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
     .ranking-grid, .winners-grid{
         width: 80%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         align-items: center;
         justify-content: center;
         text-align: center;
+        background-color: transparent;
+
     }
 
+    .ranking-grid-item-title, .winners-grid-item-player, h2, h3,.rank-title{
+        background-color: transparent;
+
+    }
 
     .winners-grid{
         margin-top: 1em;
+       
     }
+}
+
+.ranking-action-button{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
 }

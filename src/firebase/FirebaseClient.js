@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
-import { query, collection, addDoc, doc, getDocs, where, setDoc } from "firebase/firestore";
+import { query, collection, addDoc, getDocs, where,limit } from "firebase/firestore";
 
 
 
@@ -40,12 +40,13 @@ export const getPlayer = async(playerName) => {
 //     setDoc(player, { wins: true }, { merge: true });
 //   }
 
-export const addWinnerPlayer = async (player) => {
+export const addWinnerPlayer = async (player,gameType) => {
     const winnerPlayer = {
         name: player.name,
         points:player.points,
         playerType: player.playerType,
         wins: 1,
+        gameType: gameType,
         createdAt: new Date(),
     }
 
@@ -60,7 +61,7 @@ export const addWinnerPlayer = async (player) => {
 
 export const getWinners = async () => {
   try{
-    const winnersDoc = await getDocs(query(collection(database,"winners")));
+    const winnersDoc = await getDocs(query(collection(database,"winners"))); //,limit(limite))
     const winners = winnersDoc.docs.map(doc=>{return{id:doc.id,...doc.data()}});
     return winners;
   }catch (e) {

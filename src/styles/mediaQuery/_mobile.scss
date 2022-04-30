@@ -1,0 +1,12 @@
+
+@media (max-width:620px){
+    .winners-grid-item-player:last-child, .ranking-grid-item-title:last-child{
+            display: none;
+        
+    }
+
+    .ranking-grid, .winners-grid{
+        grid-template-columns: repeat(3, 1fr) !important;
+       
+    }
+}
