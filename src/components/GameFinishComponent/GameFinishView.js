@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate} from 'react-router-dom';
 import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 
-
-
 export default function GameFinishView ({setPlay, setTablero,tablero, winner,gameType}) {
     const navigate = useNavigate();
+
+
+
 
     const handlePlay = () =>{
         setTablero(tablero.fill(""))
