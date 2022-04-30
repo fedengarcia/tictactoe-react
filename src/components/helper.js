@@ -1,3 +1,4 @@
+import { getPlayer,addWinnerPlayer } from '../firebase/FirebaseClient';
 
 
 export function checkWinner (tablero,players, gameType) {
@@ -54,4 +55,16 @@ export function checkWinner (tablero,players, gameType) {
     }
 
     return null;
+}
+
+
+
+export function checkDataBasePlayer (name) {
+    getPlayer(name).then(res => {
+        if(res.length === 0){
+            return false;
+        }else{
+            return res[0];
+        }
+    })
 }
