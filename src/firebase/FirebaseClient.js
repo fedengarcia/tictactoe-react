@@ -45,7 +45,7 @@ export const addWinnerPlayer = async (player) => {
         name: player.name,
         points:player.points,
         playerType: player.playerType,
-        win: 1,
+        wins: 1,
         createdAt: new Date(),
     }
 
