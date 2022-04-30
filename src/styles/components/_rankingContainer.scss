@@ -1,0 +1,29 @@
+.ranking-container{
+    width: 50%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 2em;
+    border: 2px solid #1f1f70;
+
+
+    button{
+        margin-top: 4em;
+    }
+
+    .ranking-grid, .winners-grid{
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+
+    .winners-grid{
+        margin-top: 1em;
+    }
+}
