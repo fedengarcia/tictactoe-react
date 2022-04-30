@@ -5,7 +5,7 @@ import GameFinishView from '../GameFinishComponent/GameFinishView';
 import GameTurno from '../GameTurnoComponent/GameTurno';
 // import GameTimer from '../GameTimerComponent/GameTimer';
 import GamePlayer from '../GamePlayersComponent/GamePlayer';
-import { checkDataBasePlayer, checkWinner } from '../helper';
+import { checkWinner } from '../helper';
 import { addWinnerPlayer,updatePlayerPointsAndWins } from '../../firebase/FirebaseClient';
 
 
@@ -27,7 +27,6 @@ export default function TicTacToe () {
             setTurnoJugador("X");
         }
         
-        checkDataBasePlayer("aksdkk");
     }, []);
 
     //JUEGA LA COMPUTADORA

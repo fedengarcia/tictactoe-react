@@ -58,13 +58,3 @@ export function checkWinner (tablero,players, gameType) {
 }
 
 
-
-export function checkDataBasePlayer (name) {
-    getPlayer(name).then(res => {
-        if(res.length === 0){
-            return false;
-        }else{
-            return res[0];
-        }
-    })
-}
