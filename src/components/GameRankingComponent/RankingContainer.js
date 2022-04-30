@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getWinners } from "../../firebase/FirebaseClient";
 import ActionsViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 import {useNavigate} from 'react-router-dom';
 import Loader from '../LoaderComponent/Loader';
+import { UseGameContext } from "../../context/GameContext";
 
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
-    const [winners,setWinners] = useState([])
+    const {winnersRanking, setLoadModel,loadModel,setWinnersDB} = useContext(UseGameContext);
+
     const navigate = useNavigate();
+
     useEffect(() => {
         getWinners().then(res => {
-            setWinners(res);
+            setWinnersDB(res);
+            setLoadModel(!loadModel);
             setLoader(false)
-        })
+        });
     }, []);
+
+
 
     const handleClick = () => {
         navigate("/");
@@ -29,10 +35,10 @@ export default function RankingContainer () {
             <div className="ranking-grid-item-title"><h2>Points</h2></div>
         </div>
         {loader === true ? <Loader/> 
-        : winners.map((winner,i) => 
+        : winnersRanking.map((winner,i) => 
             <div key={i} className="winners-grid">
                 <div className="winners-grid-item-player"><h2>{winner.name}</h2></div>
-                <div className="winners-grid-item-player"><h2>{winner.win}</h2></div>
+                <div className="winners-grid-item-player"><h2>{winner.wins}</h2></div>
                 <div className="winners-grid-item-player"><h2>{winner.points}</h2></div>
             </div>)
         }
