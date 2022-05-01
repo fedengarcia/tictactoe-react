@@ -13,7 +13,7 @@ export default function TicTacToe () {
     const [turnoJugador,setTurnoJugador] = useState("X");
     const [tablero,setTablero] = useState(["","","","","","","","",""])
     const {players,gameType,} = useContext(UseGameContext)
-    const winner = checkWinner(tablero,players, gameType);
+    const [winner,setWinner] = useState("");
 
     // ELIJO AL AZAR QUIEN COMIENZA EL JUEGo
     useEffect(() => {
@@ -40,9 +40,10 @@ export default function TicTacToe () {
             setTablero(tableroCopy);
             setTurnoJugador("O")
         }
-        
+        setWinner(checkWinner(tablero,players, gameType));
 
-    }, [turnoJugador,tablero, gameType]);
+
+    }, [turnoJugador,tablero]);
 
     // CHEQUEO SI HAY UN GANADOR PARA PARAR EL JUEGO
     useEffect(() => {
@@ -67,6 +68,7 @@ export default function TicTacToe () {
             }
     
         }
+        setWinner(checkWinner(tablero,players, gameType));
 
 
     }

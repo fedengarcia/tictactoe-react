@@ -13,6 +13,7 @@ export function GameContext ({children}) {
         winnersDB.forEach(item => {
             modelDataRanking(item);
         });
+
     }, [loadModel]);
 
 
@@ -31,7 +32,7 @@ export function GameContext ({children}) {
             // setWinnersRanking(winnersRanking => [...winnersRanking,winner])
         }else{
             const winnersRankingCopy = [...winnersRanking];
-            winnersRankingCopy[result]["points"] = winnersRankingCopy[result]["points"] + 1;
+            winnersRankingCopy[result]["points"] = winnersRankingCopy[result]["points"] + winner.points;
             winnersRankingCopy[result]["wins"] = winnersRankingCopy[result]["wins"] + 1;
             setWinnersRanking(winnersRankingCopy);
         }

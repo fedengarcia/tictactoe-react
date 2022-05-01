@@ -20,13 +20,12 @@ export default function RankingContainer () {
     }, []);
 
 
-
     const handleClick = (value) => {
         if(value === "menu"){
             clearRanking();
             navigate("/");
         }else{
-            navigate("EstadisticasAvanzadas");
+            navigate("/EstadisticasAvanzadas");
         }
 
     }
@@ -48,7 +47,7 @@ export default function RankingContainer () {
 
             </div>
             {loader === true ? <Loader/> 
-            : <>{winnersRanking !== [] ? winnersRanking.map((winner,i) => 
+            : winnersRanking.map((winner,i) => 
                     <div key={i} className="winners-grid rankmob">
                         <div className="winners-grid-item-player"><h3>{winner.name}</h3></div>
                         <div className="winners-grid-item-player"><h3>{winner.wins}</h3></div>
@@ -56,9 +55,6 @@ export default function RankingContainer () {
                         <div className="winners-grid-item-player"><h3>{winner.gameType}</h3></div>
                         {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
                     </div>)
-                : <h3>Todavia no se han jugado partidas</h3>    
-                }
-            </>
             }
 
 
