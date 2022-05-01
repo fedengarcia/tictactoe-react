@@ -13,32 +13,35 @@ export function GameContext ({children}) {
         winnersDB.forEach(item => {
             modelDataRanking(item);
         });
-
     }, [loadModel]);
 
 
-    //DEVUELVE -1 SI NO EXISTE EL ITEM
+    //DEVUELVO -1 SI NO EXISTE EL ITEM
     const getWinnerIndex = (name,gameType) =>{
         const position = winnersRanking.findIndex(item => (item.name === name && item.gameType === gameType)); //&& item.playerType === playerType
         return position;
     }
 
-    //MODELO DATOS PARA EL RANK DE GANADORES
+    //MODELO DATOS PARA EL RANKING DE GANADORES
     const modelDataRanking = (winner) => {
 
         let result = getWinnerIndex(winner.name,winner.gameType);
+        //NO EXISTE ELEMENTO
         if(result === -1){
             winnersRanking.push(winner);
             // setWinnersRanking(winnersRanking => [...winnersRanking,winner])
+
+            // EXISTE, ACTUALIZO DATOS Y ORDENO ARRAY
         }else{
             const winnersRankingCopy = [...winnersRanking];
             winnersRankingCopy[result]["points"] = winnersRankingCopy[result]["points"] + winner.points;
             winnersRankingCopy[result]["wins"] = winnersRankingCopy[result]["wins"] + 1;
-            setWinnersRanking(winnersRankingCopy);
+            setWinnersRanking(winnersRankingCopy.sort((a, b) => (a.points < b.points) ? 1 : -1)
+            )
         }
     }
 
-
+    // VACIO RANKING
     const clearRanking = () => {
         setWinnersRanking([]);
     }
