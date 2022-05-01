@@ -57,14 +57,14 @@ export default function RankingContainer () {
                     </div>)
             }
 
-
-        </div>
-
-        <div className="ranking-action-button">
-            <button onClick={() => handleClick("menu")}>VOLVER AL MENU</button>
-            <button onClick={handleClick}>ESTADISTICAS AVANZADAS</button>
-        </div>
+            <div className="ranking-action-button">
+                <button onClick={() => handleClick("menu")}>VOLVER AL MENU</button>
+                <button onClick={handleClick}>ESTADISTICAS AVANZADAS</button>
+            </div>
         
+        </div>
+
+
 
 
     </ActionsViewContainer>
