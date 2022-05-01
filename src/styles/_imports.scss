@@ -5,9 +5,11 @@
 @import "./components/actionViewContainer";
 @import "./components/gameFinishContainer";
 @import "./components/gameRulesContainer";
-@import "./components/rankingContainer";
+@import "./components/gameRankingContainer";
 @import "./components/loader";
-@import "./components/tableroContainer";
+@import "./components/gameTableroContainer";
+@import "./components/gameTurnoContainer";
+@import "./components/gamePlayersContainer";
 
 // MEDIA QUERY
 @import "./mediaQuery/mobile";
