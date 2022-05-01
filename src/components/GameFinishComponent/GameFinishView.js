@@ -20,16 +20,15 @@ export default function GameFinishView ({setPlay, setTablero,tablero, winner,gam
 
     return (<ActionViewContainer>
             <div className="game-finish-container">
-                {winner.name !== "Computer" 
+                {winner.name === "Computer" 
                 ? 
                     <>
                         <h2>{`Ganador: ${winner.name}`}</h2>
                         <h2>{`Haz sumado: ${winner.points} puntos a tu historial`}</h2>
                     </>
                 : 
-                    <h2>{`Ganador: ${winner.name}`}</h2>
+                    <h2>Empate</h2>
                 }
-                {!winner.name && <h2>Empate</h2>}
                 <button onClick={handlePlay}>JUGAR DE NUEVO</button>
                 <button onClick={() => handleRoute("jugadores")}>CAMBIAR JGUADORES</button>
                 <button onClick={() => handleRoute("menu")}>VOLVER AL MENU</button>
