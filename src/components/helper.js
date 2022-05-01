@@ -15,7 +15,7 @@ export function checkGameResult (tablero,playerOne,playerTwo, gameType) {
     //VERIFICO SI HAY EMPATE y RETORNO OBJETO EMPATE
     const checkEmpate = tablero.filter(box => box === "");
     if(checkEmpate.length === 0){
-        if(gameType === "Computer"){
+        if(gameType === "Multiplayer"){
             return ({
                 empate:{
                     playerOne: playerOne.name,
