@@ -11,12 +11,14 @@ export default function PlayerForm ({setError}) {
         setPlayers({...players,playerOne:{
             name:e.target.value,
         }})
+        sessionStorage.setItem("playerOne", JSON.stringify({name:e.target.value}));
     }
     
     const handlePlayerX_Data = (e) => {
         setPlayers({...players,playerTwo:{
             name:e.target.value,
         }})
+        sessionStorage.setItem("playerTwo",JSON.stringify({name:e.target.value}));
     }
 
 

@@ -9,14 +9,27 @@ import { addWinnerPlayer } from '../../firebase/FirebaseClient';
 
 
 export default function TicTacToe () {
+    // JUGABILIDAD
     const [play, setPlay] = useState(true);
     const [turnoJugador,setTurnoJugador] = useState("X");
     const [tablero,setTablero] = useState(["","","","","","","","",""])
+    
+    // DATOS PARA FIREBASE
     const {players,gameType,} = useContext(UseGameContext)
     const [winner,setWinner] = useState("");
 
+    // JUGADORES PARA LOCALSTORAGE
+    const [playerOne, setPlayerOne] = useState("");
+    const [playerTwo, setPlayerTwo] = useState("");
 
-    // ELIJO AL AZAR QUIEN COMIENZA EL JUEGo
+
+    useEffect(() => {
+        setPlayerOne(JSON.parse(sessionStorage.getItem("playerTwo")));
+        setPlayerTwo(JSON.parse(sessionStorage.getItem("playerOne")));
+    }, []);
+
+
+    // ELEGIR AL AZAR QUIEN COMIENZA EL JUEGO
     useEffect(() => {
         
         if (Math.floor(Math.random()*["O","X"].length) === 0){
@@ -30,7 +43,7 @@ export default function TicTacToe () {
 
 
 
-    //JUEGA LA COMPUTADORA
+    //MOVIMIENTO DE LA COMPUTADORA -- Si hay tiempo agregar IA
     useEffect(() => {            
         if(turnoJugador === "X" && gameType==="Computer"){
             var tableroCopy =  tablero.slice();
@@ -49,8 +62,9 @@ export default function TicTacToe () {
 
     }, [turnoJugador,tablero,gameType]);
 
-    // CHEQUEO SI HAY UN GANADOR PARA PARAR EL JUEGO
+    // VERIFICO SI HAY UN GANADOR PARA PARAR EL JUEGO
     useEffect(() => {
+        
         if(winner){
             addWinnerPlayer(winner,gameType);
             setPlay(false);
@@ -85,11 +99,11 @@ export default function TicTacToe () {
             ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero} gameType={gameType}/>
             : <>
                                 
-                <GamePlayer players={players} gameType={gameType}/>
+                <GamePlayer playerOne={playerOne} playerTwo={playerTwo} gameType={gameType}/>
             
                 <GameTablero handlePlay={handlePlay} tablero={tablero}/>
                 
-                <GameTurno players={players} gameType={gameType} turnoJugador={turnoJugador}/>
+                <GameTurno playerOne={playerOne} playerTwo={playerTwo} gameType={gameType} turnoJugador={turnoJugador}/>
             
             </>
             }

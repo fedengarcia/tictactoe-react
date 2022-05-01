@@ -1,25 +1,26 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 
 
+export default function GamePlayer ({gameType,playerOne,playerTwo}) {
 
-export default function GamePlayer ({players, gameType}) {
 
-
-    return (
-        <div className="players-container">
+    return (<>
+        {playerOne !== "" && <div className="players-container">
                 {gameType === "Computer" 
                 ? <>
-                    <h2>{`Player O: ${players.playerOne.name}`}</h2>
+                    <h2>{`Player O: ${playerOne.name}`}</h2>
                     <h2>VS</h2>
                     <h2>computadora</h2>
                 </>
                 : <>
-                    <h2>{`Player O: ${players.playerOne.name}`}</h2>
+                    <h2>{`Player O: ${playerOne.name}`}</h2>
                     <h2>VS</h2>
-                    <h2>{`Player X: ${players.playerTwo.name}`}</h2>
+                    <h2>{`Player X: ${playerTwo.name}`}</h2>
                 </>
+                
                 }
-            
-        </div>
+            </div>
+        }
+        </>
     )
 }

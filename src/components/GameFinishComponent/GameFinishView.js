@@ -30,7 +30,7 @@ export default function GameFinishView ({setPlay, setTablero,tablero, winner,gam
                     <h2>Empate</h2>
                 }
                 <button onClick={handlePlay}>JUGAR DE NUEVO</button>
-                <button onClick={() => handleRoute("jugadores")}>CAMBIAR JGUADORES</button>
+                <button onClick={() => handleRoute("jugadores")}>CAMBIAR JUGADORES</button>
                 <button onClick={() => handleRoute("menu")}>VOLVER AL MENU</button>
             </div>
         </ActionViewContainer>
