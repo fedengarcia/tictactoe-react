@@ -6,7 +6,7 @@ import GameTurno from '../GameTurnoComponent/GameTurno';
 import GamePlayer from '../GamePlayersComponent/GamePlayer';
 import { checkWinner } from '../helper';
 import { addWinnerPlayer } from '../../firebase/FirebaseClient';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function TicTacToe () {
     // JUGABILIDAD
@@ -22,7 +22,7 @@ export default function TicTacToe () {
     const [playerOne, setPlayerOne] = useState("");
     const [playerTwo, setPlayerTwo] = useState("");
 
-
+    const navigate = useNavigate();
     useEffect(() => {
         setPlayerOne(JSON.parse(sessionStorage.getItem("playerTwo")));
         setPlayerTwo(JSON.parse(sessionStorage.getItem("playerOne")));
@@ -91,10 +91,18 @@ export default function TicTacToe () {
 
     }
 
+
+    const handleBack = () => {
+        navigate("/")
+    }
+
     return (
         <div className="game-container">
-            <h1>Tipo de juego: {gameType}</h1>
-        
+            <div className="game-header">
+                <button onClick={handleBack}>VOLVER ATRAS</button>
+                <h1>Tipo de juego: {gameType}</h1>
+            </div>
+            
             {play === false
             ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero} gameType={gameType}/>
             : <>
