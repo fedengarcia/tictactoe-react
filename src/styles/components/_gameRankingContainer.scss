@@ -1,3 +1,9 @@
+.rank-title{
+    width: 80%;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
 .ranking-container{
     width: 80%;
     height: 60vh;
@@ -11,12 +17,8 @@
     box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
     background-color: rgb(234, 190, 135);
 
-    .rank-title{
-        width: 80%;
-        text-align: center;
-        margin-bottom: 1em;
-
-
+    .ranking-nav{
+        background-color: transparent;
     }
 
     .ranking-grid {
@@ -24,9 +26,7 @@
         margin-bottom: 1em;
     }
 
-    button{
-        margin-top: 4em;
-    }
+
     h2{
         margin-top: 1em;
         font-size: 3vh;
@@ -37,10 +37,10 @@
         font-family: Arial, Helvetica, sans-serif;
 
     }
-    .ranking-grid, .winners-grid{
+    .ranking-grid, .result-grid{
         width: 80%;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         align-items: center;
         justify-content: center;
         text-align: center;
@@ -48,12 +48,12 @@
 
     }
 
-    .ranking-grid-item-title, .winners-grid-item-player, h2, h3,.rank-title{
+    .ranking-grid-item, .result-grid-item, h2, h3,.rank-title{
         background-color: transparent;
 
     }
 
-    .winners-grid{
+    .result-grid{
         margin-top: 1em;
        
     }
@@ -64,4 +64,7 @@
     display: flex;
     flex-direction: row;
     background-color: transparent;
+    button{
+        margin-top: 4em;
+    }
 }

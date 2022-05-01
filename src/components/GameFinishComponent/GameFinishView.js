@@ -17,7 +17,6 @@ export default function GameFinishView ({setPlay, setTablero,tablero, gameResult
             navigate(`/`);
         }
     }
-    console.log(gameResult)
 return (<ActionViewContainer>
             <div className="game-finish-container">
 

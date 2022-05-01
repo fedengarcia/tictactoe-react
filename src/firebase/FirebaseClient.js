@@ -34,13 +34,20 @@ export const getPlayer = async(playerName) => {
 }
 
 export const addEmpateDoc = async (empate,gameType) => {
-  const empateDoc ={ 
-      ...empate,
+  const playerEmpate1Doc = { 
+      name:empate.playerOne,
+      empates:1,
       gameType: gameType,
   }
+  const playerEmpate2Doc = { 
+    name:empate.playerTwo,
+    empates:1,
+    gameType: gameType,
+}
   try {
-    const docRef = await addDoc(collection(database, "empates"), empateDoc);
-    console.log("Document written with ID: ", docRef.id);
+    await addDoc(collection(database, "empates"), playerEmpate1Doc);
+    await addDoc(collection(database, "empates"), playerEmpate2Doc);
+
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -57,8 +64,7 @@ export const addLooserPlayer =  async (player,gameType) => {
   }
 
   try {
-      const docRef = await addDoc(collection(database, "loosers"), looserPlayerDoc);
-      console.log("Document written with ID: ", docRef.id);
+      await addDoc(collection(database, "loosers"), looserPlayerDoc);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -76,8 +82,7 @@ export const addWinnerPlayer = async (player,gameType) => {
     }
 
     try {
-        const docRef = await addDoc(collection(database, "winners"), winnerPlayerDoc);
-        console.log("Document written with ID: ", docRef.id);
+        await addDoc(collection(database, "winners"), winnerPlayerDoc);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -87,6 +92,29 @@ export const addWinnerPlayer = async (player,gameType) => {
 export const getWinners = async () => {
   try{
     const winnersDoc = await getDocs(query(collection(database,"winners"))); //,limit(limite))
+    const winners = winnersDoc.docs.map(doc=>{return{id:doc.id,...doc.data()}});
+    return winners;
+  }catch (e) {
+    console.error("Error reading documents: ",e)
+  }
+
+}
+
+
+export const getLoosers = async () => {
+  try{
+    const winnersDoc = await getDocs(query(collection(database,"loosers"))); //,limit(limite))
+    const winners = winnersDoc.docs.map(doc=>{return{id:doc.id,...doc.data()}});
+    return winners;
+  }catch (e) {
+    console.error("Error reading documents: ",e)
+  }
+
+}
+
+export const getEmpates = async () => {
+  try{
+    const winnersDoc = await getDocs(query(collection(database,"empates"))); //,limit(limite))
     const winners = winnersDoc.docs.map(doc=>{return{id:doc.id,...doc.data()}});
     return winners;
   }catch (e) {

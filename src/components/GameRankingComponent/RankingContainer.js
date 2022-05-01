@@ -1,13 +1,26 @@
 import React, { useEffect, useState, useContext } from "react";
-import { getWinners } from "../../firebase/FirebaseClient";
+import { getEmpates, getLoosers, getWinners } from "../../firebase/FirebaseClient";
 import ActionsViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 import {useNavigate} from 'react-router-dom';
-import Loader from '../LoaderComponent/Loader';
 import { UseGameContext } from "../../context/GameContext";
+import WinnersRanking from "./WinnersRanking";
+import LoosersRanking from "./LoosersRanking";
+import EmpatesRanking from "./EmpatesRanking";
+import PointsRanking from './PointsRanking';
 
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
-    const {winnersRanking, setLoadModel,loadModel,setWinnersDB,clearRanking} = useContext(UseGameContext);
+    const [rankingType,setRankingType] = useState("winners");
+    const {pointsRanking,
+            winnersRanking,
+            loosersRanking,
+            empatesRanking, 
+            setWinnersDB,
+            setLoosersDB,
+            setEmpatesDB,
+            clearRanking, 
+            setLoadModel,
+            loadModel} = useContext(UseGameContext);
 
     const navigate = useNavigate();
 
@@ -17,7 +30,21 @@ export default function RankingContainer () {
             setLoadModel(!loadModel);
             setLoader(false)
         });
+
+        getLoosers().then(res => {
+            setLoosersDB(res);
+            setLoadModel(!loadModel);
+            setLoader(false)
+        });
+
+        getEmpates().then(res => {
+            setEmpatesDB(res);
+            setLoadModel(!loadModel);
+            setLoader(false)
+        });
+
     }, []);
+
 
 
     const handleClick = (value) => {
@@ -30,6 +57,11 @@ export default function RankingContainer () {
 
     }
 
+    const handleRanking = (type) => {
+        setRankingType(type);
+    }
+
+
     return (
     <ActionsViewContainer>
         <div className="rank-title">
@@ -37,31 +69,23 @@ export default function RankingContainer () {
         </div>
 
         <div className="ranking-container">
-            
-            <div className="ranking-grid rankmob">
-                <div className="ranking-grid-item-title"><h2>Name</h2></div>
-                <div className="ranking-grid-item-title"><h2>Wins</h2></div>
-                <div className="ranking-grid-item-title"><h2>Points</h2></div>
-                <div className="ranking-grid-item-title"><h2>Game Type</h2></div>
-                {/* <div className="winners-grid-item-title"><h2>PlayerType</h2></div> */}
-
+            <div className="ranking-nav">
+            <button onClick={() => handleRanking("points")}>Puntos</button>
+                <button onClick={() => handleRanking("winners")}>Ganadores</button>
+                <button onClick={() => handleRanking("loosers")}>Perdedores</button>
+                <button onClick={() => handleRanking("empates")}>Empates</button>
             </div>
-            {loader === true ? <Loader/> 
-            : winnersRanking.map((winner,i) => 
-                    <div key={i} className="winners-grid rankmob">
-                        <div className="winners-grid-item-player"><h3>{winner.name}</h3></div>
-                        <div className="winners-grid-item-player"><h3>{winner.wins}</h3></div>
-                        <div className="winners-grid-item-player"><h3>{winner.points}</h3></div>
-                        <div className="winners-grid-item-player"><h3>{winner.gameType}</h3></div>
-                        {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
-                    </div>)
-            }
 
+            {rankingType === "points" ? <PointsRanking loader={loader} pointsRanking={pointsRanking}/> : <></>}
+            {rankingType === "winners" ? <WinnersRanking loader={loader} winnersRanking={winnersRanking}/> : <></>}
+            {rankingType === "loosers" ? <LoosersRanking loader={loader} loosersRanking={loosersRanking}/> : <></>}
+            {rankingType === "empates" ? <EmpatesRanking loader={loader} empatesRanking={empatesRanking}/> : <></>}
+            
             <div className="ranking-action-button">
                 <button onClick={() => handleClick("menu")}>VOLVER AL MENU</button>
-                <button onClick={handleClick}>ESTADISTICAS AVANZADAS</button>
+                {/* <button onClick={handleClick}>ESTADISTICAS AVANZADAS</button> */}
             </div>
-        
+            
         </div>
 
 
