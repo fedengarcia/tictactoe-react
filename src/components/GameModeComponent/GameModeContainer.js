@@ -1,9 +1,15 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 import ActionsViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 
 export default function GameModeContainer () {
 
+    useEffect(() => {
+        sessionStorage.setItem("playerOne", JSON.stringify({}));
+        sessionStorage.setItem("playerTwo", JSON.stringify({}));
+        sessionStorage.setItem("gameType", JSON.stringify({}));
+
+    }, []);
 
     return(<ActionsViewContainer>
         

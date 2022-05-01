@@ -33,15 +33,40 @@ export const getPlayer = async(playerName) => {
     
 }
 
-// export const updatePlayerPointsAndWins = (dataBasePlayer) => {
-//     console.log(dataBasePlayer)
-//     const player =  doc(database, 'winners', dataBasePlayer.id);
-//     console.log("TU JUGADOR",player)
-//     setDoc(player, { wins: true }, { merge: true });
-//   }
+export const addEmpateDoc = async (empate,gameType) => {
+  const empateDoc ={ 
+      ...empate,
+      gameType: gameType,
+  }
+  try {
+    const docRef = await addDoc(collection(database, "empates"), empateDoc);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+
+export const addLooserPlayer =  async (player,gameType) => {
+  const looserPlayerDoc = {
+    name: player.name,
+    playerType: player.playerType,
+    losses: 1,
+    gameType: gameType,
+    createdAt: new Date(),
+  }
+
+  try {
+      const docRef = await addDoc(collection(database, "loosers"), looserPlayerDoc);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+}
+
 
 export const addWinnerPlayer = async (player,gameType) => {
-    const winnerPlayer = {
+    const winnerPlayerDoc = {
         name: player.name,
         points:player.points,
         playerType: player.playerType,
@@ -51,7 +76,7 @@ export const addWinnerPlayer = async (player,gameType) => {
     }
 
     try {
-        const docRef = await addDoc(collection(database, "winners"), winnerPlayer);
+        const docRef = await addDoc(collection(database, "winners"), winnerPlayerDoc);
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
