@@ -27,12 +27,14 @@ export default function PlayerForm ({setError}) {
         if(gameType === "Multiplayer"){
             if((players.playerOne === undefined || players.playerTwo === undefined)){
 
-                setError(true);
+                setError("nombreVacio");
 
             }else if((players.playerOne.name === "" || players.playerTwo.name === "") ){
                 
-                setError(true);
+                setError("nombreVacio");
 
+            }else if(players.playerOne.name === players.playerTwo.name){
+                setError("nombresIguales");
             }else{
                 navigate("/Game/Multiplayer");
             }
@@ -40,11 +42,11 @@ export default function PlayerForm ({setError}) {
         }else if(gameType === "Computer"){
             if( players.playerOne  === undefined){
 
-                setError(true);
+                setError("nombreVacio");
 
             }else if(players.playerOne.name  === ""){
 
-                setError(true);
+                setError("nombreVacio");
 
             }else{
                 navigate("/Game/Computer");
