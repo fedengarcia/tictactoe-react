@@ -5,7 +5,7 @@ import GameFinishView from '../GameFinishComponent/GameFinishView';
 import GameTurno from '../GameTurnoComponent/GameTurno';
 import GamePlayer from '../GamePlayersComponent/GamePlayer';
 import { checkWinner } from '../helper';
-import { addWinnerPlayer,updatePlayerPointsAndWins } from '../../firebase/FirebaseClient';
+import { addWinnerPlayer } from '../../firebase/FirebaseClient';
 
 
 export default function TicTacToe () {
@@ -15,6 +15,7 @@ export default function TicTacToe () {
     const {players,gameType,} = useContext(UseGameContext)
     const [winner,setWinner] = useState("");
 
+
     // ELIJO AL AZAR QUIEN COMIENZA EL JUEGo
     useEffect(() => {
         
@@ -23,8 +24,11 @@ export default function TicTacToe () {
         }else{
             setTurnoJugador("X");
         }
-        
+
     }, []);
+
+
+
 
     //JUEGA LA COMPUTADORA
     useEffect(() => {            
@@ -43,7 +47,7 @@ export default function TicTacToe () {
         setWinner(checkWinner(tablero,players, gameType));
 
 
-    }, [turnoJugador,tablero]);
+    }, [turnoJugador,tablero,gameType]);
 
     // CHEQUEO SI HAY UN GANADOR PARA PARAR EL JUEGO
     useEffect(() => {
@@ -75,13 +79,12 @@ export default function TicTacToe () {
 
     return (
         <div className="game-container">
-        <h1>Tipo de juego: {gameType}</h1>
+            <h1>Tipo de juego: {gameType}</h1>
+        
             {play === false
             ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero} gameType={gameType}/>
             : <>
-                
-                {/* <GameTimer timer={timer} setTimer={setTimer}/> */}
-                
+                                
                 <GamePlayer players={players} gameType={gameType}/>
             
                 <GameTablero handlePlay={handlePlay} tablero={tablero}/>

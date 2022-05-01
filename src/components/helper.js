@@ -1,5 +1,3 @@
-import { getPlayer,addWinnerPlayer } from '../firebase/FirebaseClient';
-
 
 export function checkWinner (tablero,players, gameType) {
     const winnerPatterns = [
