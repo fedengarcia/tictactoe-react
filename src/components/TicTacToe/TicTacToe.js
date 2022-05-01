@@ -21,11 +21,13 @@ export default function TicTacToe () {
     // JUGADORES PARA LOCALSTORAGE
     const [playerOne, setPlayerOne] = useState("");
     const [playerTwo, setPlayerTwo] = useState("");
+    const [type, setType] = useState("");
 
     const navigate = useNavigate();
     useEffect(() => {
         setPlayerOne(JSON.parse(sessionStorage.getItem("playerTwo")));
         setPlayerTwo(JSON.parse(sessionStorage.getItem("playerOne")));
+        setType(JSON.parse(sessionStorage.getItem("gameType")))
     }, []);
 
 
@@ -100,7 +102,7 @@ export default function TicTacToe () {
         <div className="game-container">
             <div className="game-header">
                 <button onClick={handleBack}>VOLVER ATRAS</button>
-                <h1>Tipo de juego: {gameType}</h1>
+                <h1>Tipo de juego: {type.gameType}</h1>
             </div>
             
             {play === false

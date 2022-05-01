@@ -12,6 +12,8 @@ export default function PlayerInfoContainer () {
 
     useEffect(() => {
         setGameType(gameType)
+        sessionStorage.setItem("gameType", JSON.stringify({gameType}));
+
     }, [setGameType,gameType]);
 
     useEffect(() => {
