@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { UseGameContext } from '../../context/GameContext';
 import GameTablero from '../GameTableroComponent/GameTablero';
 import GameFinishView from '../GameFinishComponent/GameFinishView';
 import GameTurno from '../GameTurnoComponent/GameTurno';
 import GamePlayer from '../GamePlayersComponent/GamePlayer';
-import { checkWinner } from '../helper';
-import { addWinnerPlayer } from '../../firebase/FirebaseClient';
+import { checkGameResult } from '../helper';
+import { addWinnerPlayer,addLooserPlayer,addEmpateDoc } from '../../firebase/FirebaseClient';
 import { useNavigate } from 'react-router-dom';
 
 export default function TicTacToe () {
@@ -15,10 +14,9 @@ export default function TicTacToe () {
     const [tablero,setTablero] = useState(["","","","","","","","",""])
     
     // DATOS PARA FIREBASE
-    const {players,gameType,} = useContext(UseGameContext)
-    const [winner,setWinner] = useState("");
+    const [gameResult,setGameResult] = useState({});
 
-    // JUGADORES PARA LOCALSTORAGE
+    // CARGO SESSION STORAGE
     const [playerOne, setPlayerOne] = useState("");
     const [playerTwo, setPlayerTwo] = useState("");
     const [type, setType] = useState("");
@@ -43,11 +41,9 @@ export default function TicTacToe () {
     }, []);
 
 
-
-
     //MOVIMIENTO DE LA COMPUTADORA -- Si hay tiempo agregar IA
     useEffect(() => {            
-        if(turnoJugador === "X" && gameType==="Computer"){
+        if(turnoJugador === "X" && type.gameType==="Computer"){
             var tableroCopy =  tablero.slice();
             var randomPosition = Math.floor(Math.random()*tableroCopy.length);
             
@@ -59,19 +55,25 @@ export default function TicTacToe () {
             setTablero(tableroCopy);
             setTurnoJugador("O")
         }
-        setWinner(checkWinner(tablero,players, gameType));
+        setGameResult(checkGameResult(tablero,playerOne,playerTwo, type.gameType));
 
+    }, [turnoJugador,tablero,type.gameType]);
 
-    }, [turnoJugador,tablero,gameType]);
-
-    // VERIFICO SI HAY UN GANADOR PARA PARAR EL JUEGO
+    //  AL OBTENER UN RESULTADO DEL JUEGO, GUARDO LOS DOCUMENTOS EN FIREBASE y PAUSEO EL JUEGO
     useEffect(() => {
-        
-        if(winner){
-            addWinnerPlayer(winner,gameType);
-            setPlay(false);
+        if(gameResult){
+            if(gameResult.winner){
+                addWinnerPlayer(gameResult.winner,type.gameType);
+                addLooserPlayer(gameResult.looser,type.gameType);
+                setPlay(false);
+            }
+            if(gameResult.empate){
+                addEmpateDoc(gameResult.empate,type.gameType);
+                setPlay(false);
+            }
         }
-    }, [winner]);
+
+    }, [gameResult]);
 
 
 
@@ -88,7 +90,7 @@ export default function TicTacToe () {
             }
     
         }
-        setWinner(checkWinner(tablero,players, gameType));
+        setGameResult(checkGameResult(tablero,playerOne,playerTwo, type.gameType));
 
 
     }
@@ -106,10 +108,10 @@ export default function TicTacToe () {
             </div>
             
             {play === false
-            ? <GameFinishView setPlay={setPlay} winner={winner} tablero={tablero} setTablero={setTablero} gameType={gameType}/>
+            ? <GameFinishView setPlay={setPlay} gameResult={gameResult} tablero={tablero} setTablero={setTablero} gameType={type.gameType}/>
             : <>
                                 
-                <GamePlayer playerOne={playerOne} playerTwo={playerTwo} gameType={gameType}/>
+                <GamePlayer playerOne={playerOne} playerTwo={playerTwo} gameType={type.gameType}/>
             
                 <GameTablero handlePlay={handlePlay} tablero={tablero}/>
                 
