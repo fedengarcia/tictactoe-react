@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import GameTablero from '../GameTableroComponent/GameTablero';
 import GameFinishView from '../GameFinishComponent/GameFinishView';
 import GameTurno from '../GameTurnoComponent/GameTurno';
