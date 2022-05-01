@@ -4,6 +4,7 @@ export const UseGameContext = createContext();
 
 export function GameContext ({children}) {
     const [players, setPlayers]=useState({})
+    const [gameType,setGameType] = useState(undefined);
     const [winnersDB,setWinnersDB] = useState([]);
     const [loadModel,setLoadModel] = useState(false)
     const [winnersRanking,setWinnersRanking] = useState([]);
@@ -50,7 +51,7 @@ export function GameContext ({children}) {
 
 
     return(
-    <UseGameContext.Provider value={{clearRanking,winnersRanking,setLoadModel,loadModel,setWinnersDB,setPlayers,players}}>
+    <UseGameContext.Provider value={{clearRanking,winnersRanking,setLoadModel,loadModel,setWinnersDB,setPlayers,players,setGameType,gameType}}>
         {children}
     </UseGameContext.Provider>)
 }
