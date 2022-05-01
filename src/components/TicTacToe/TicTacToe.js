@@ -25,8 +25,8 @@ export default function TicTacToe () {
 
     const navigate = useNavigate();
     useEffect(() => {
-        setPlayerOne(JSON.parse(sessionStorage.getItem("playerTwo")));
-        setPlayerTwo(JSON.parse(sessionStorage.getItem("playerOne")));
+        setPlayerOne(JSON.parse(sessionStorage.getItem("playerOne")));
+        setPlayerTwo(JSON.parse(sessionStorage.getItem("playerTwo")));
         setType(JSON.parse(sessionStorage.getItem("gameType")))
     }, []);
 
@@ -113,7 +113,7 @@ export default function TicTacToe () {
             
                 <GameTablero handlePlay={handlePlay} tablero={tablero}/>
                 
-                <GameTurno playerOne={playerOne} playerTwo={playerTwo} gameType={gameType} turnoJugador={turnoJugador}/>
+                <GameTurno playerOne={playerOne} playerTwo={playerTwo} gameType={type.gameType} turnoJugador={turnoJugador}/>
             
             </>
             }

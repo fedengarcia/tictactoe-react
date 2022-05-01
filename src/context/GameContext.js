@@ -17,15 +17,15 @@ export function GameContext ({children}) {
 
 
     //DEVUELVO -1 SI NO EXISTE EL ITEM
-    const getWinnerIndex = (name) =>{
-        const position = winnersRanking.findIndex(item => (item.name === name)); //&& item.playerType === playerType
+    const getWinnerIndex = (name,gameType) =>{
+        const position = winnersRanking.findIndex(item => (item.name === name && item.gameType === gameType)); //&& item.playerType === playerType
         return position;
     }
 
     //MODELO DATOS PARA EL RANKING DE GANADORES
     const modelDataRanking = (winner) => {
 
-        let result = getWinnerIndex(winner.name);
+        let result = getWinnerIndex(winner.name,winner.gameType);
         //NO EXISTE ELEMENTO
         if(result === -1){
             winnersRanking.push(winner);
