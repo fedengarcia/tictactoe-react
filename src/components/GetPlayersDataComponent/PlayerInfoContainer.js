@@ -30,8 +30,14 @@ export default function PlayerInfoContainer () {
             
             
             {error && <div className='error-container'>
-                {gameType === "Multiplayer" ? <p>Debes ingresar los nombres para jugar</p>
-                : <p>Debes ingresar un nombre para jugar</p>
+                {error === "nombresIguales" ?
+                    <p>Los nombres no pueden ser iguales</p> 
+                 :
+                    <>
+                        {gameType === "Multiplayer" ? <p>Debes ingresar los nombres para jugar</p>
+                        : <p>Debes ingresar un nombre para jugar</p>
+                        }
+                    </>
                 }
             </div>}
             
