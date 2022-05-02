@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# TIC TAC TOE - REACT JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tecnologias utilizadas:
+    
+    React JS
+    Material
+    Firebase
+    Sass
 
-## Available Scripts
+## Scripts
 
-In the project directory, you can run:
+En el directiorio del proyecto, se puede ejectuar el siguiente comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para ejecutar la app en modo de desarrollo.
+Abrir [http://localhost:3000](http://localhost:3000) para verla en el navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## TIC TAC TOE
+La applicacion contiene 5 paginas que se detallan a continuacion:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Pagina de inicio - Componente: (GameModeContainer) - Path:"/"
+    Contiene:
+        - Boton Multiplayer
+        - Boton Computer
+        - Boton Ver Reglas
+        - Boton Ranking
 
-### `npm run build`
+###  Pagina para cargar datos de jugadores - Componente: (PlayerInfoContainer) - Path("/PlayerInfo/gameType")
+    Contiene:
+        - Form para jugadores
+        - Boton ejecutador del juego
+        - Boton para volver atras 
+        - Manejo de errores de nombres de jugadores
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Pagina de jugabilidad - Componente: (TicTacToe) - Path("/Game/gameType")
+    Contiene:
+        - Header
+        - Logica del juego
+        - Componente para mostrar resultado del juego
+        - Componente para manejar Turnos
+        - Componente para mostrar nombres de los juegadores
+        - Componente del tablero de juego
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Pagina de relgas del juego - Componente: (GameRulesContainer) - Path("/Rules")
+    Contiene:
+        - Reglas del juego
+        - Titulo
 
-### `npm run eject`
+### Pagina del ranking del juego - Componente: (GameRankingContainer) - Path("/Rules")
+    Contiene:
+        - Titulo
+        - Navbar
+        - Ranking de Perdedores
+        - Ranking de Ganadores
+        - Ranking de Puntos
+        - Ranking de Empates
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    Nota: El ranking fue armado solo para el modo de juego multiplayer.    
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### helpers.js
+   Vrificar si hay un ganador y retornar un objeto con el resultado del juego.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### gameContext.js
+    Guardar jugadores, tipo de juego y modelar los datos obtenidos de la base de datos.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Firebase
+    Guardar documentos de jugadores que ganaron, perdieron y empataron.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
