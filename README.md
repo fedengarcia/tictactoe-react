@@ -22,10 +22,10 @@ La applicacion contiene 5 paginas que se detallan a continuacion:
 
 ### Pagina de inicio - Componente: (GameModeContainer) - Path:"/"
     Contiene:
-        - Boton Multiplayer
-        - Boton Computer
-        - Boton Ver Reglas
-        - Boton Ranking
+        Boton Multiplayer
+        Boton Computer
+        Boton Ver Reglas
+        Boton Ranking
 
 ###  Pagina para cargar datos de jugadores - Componente: (PlayerInfoContainer) - Path("/PlayerInfo/gameType")
     Contiene:
