@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 
-
+// COMPONENTE QUE MUESTRA QUIEN ESTA JUGANDO y TIPO DE JUEGO
 export default function GamePlayer ({gameType,playerOne,playerTwo}) {
 
     return (<>

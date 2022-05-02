@@ -2,8 +2,10 @@ import React,{useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 import ActionsViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 
+// PANTALLA PRINCIPAL
 export default function GameModeContainer () {
 
+    // CLEAR SESSION STORAGE
     useEffect(() => {
         sessionStorage.setItem("playerOne", JSON.stringify({}));
         sessionStorage.setItem("playerTwo", JSON.stringify({}));

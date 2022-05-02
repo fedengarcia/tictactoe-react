@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { Navbar, Nav } from "react-bootstrap";
 
 
-
+// NAVBAR DE RANKING COMPONENT
 export default function NavbarRanking ({handleRanking}) {
     const [isNavCollapsed, setIsNavCollapsed] = useState(false);
 

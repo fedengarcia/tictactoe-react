@@ -2,14 +2,17 @@ import React from 'react'
 import { useNavigate} from 'react-router-dom';
 import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 
+// PANTALLA PARA CUANDO SE TERMINA UNA PARTIDA
 export default function GameFinishView ({setPlay, setTablero,tablero, gameResult,gameType}) {
     const navigate = useNavigate();
 
+    // JUGAR DE NUEVO - VACIO EL ARRAY TABLERO Y EJECUTO NUEVO JUEGO
     const handlePlay = () =>{
         setTablero(tablero.fill(""))
         setPlay(true);
     }
 
+    // MANEJO DE RUTAS - CAMBIAR JUGADOR y VOLVER AL MENU
     const handleRoute = (value) => {
         if(value === "jugadores"){
             navigate(`/PlayerInfo/${gameType}`);

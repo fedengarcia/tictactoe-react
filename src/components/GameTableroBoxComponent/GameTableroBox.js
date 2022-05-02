@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-
+// COMPONENTE - CUADRADO DEL TABLERO
 export default function GameTableroBox({value,handlePlay,position}) {
 
 

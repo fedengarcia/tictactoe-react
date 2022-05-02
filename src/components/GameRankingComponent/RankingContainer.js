@@ -6,9 +6,11 @@ import { UseGameContext } from "../../context/GameContext";
 import NavbarRanking from "./NavbarRanking";
 import Ranking from "./Ranking";
 
+// RANKING CONTAINER
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
     const [rankingType,setRankingType] = useState("Ganadores");
+    // GAME CONTEXT
     const {pointsRanking,
             winnersRanking,
             loosersRanking,

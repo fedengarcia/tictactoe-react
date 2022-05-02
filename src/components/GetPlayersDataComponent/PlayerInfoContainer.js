@@ -4,7 +4,7 @@ import { UseGameContext } from '../../context/GameContext';
 import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 import PlayerForm from '../PlayerForm/PlayerForm';
 
-
+// PANTALLA DONDE SE GUARDAN LOS DATOS DEL JUGADORES
 export default function PlayerInfoContainer () {
     const {gameType} = useParams();
     const {setGameType} = useContext(UseGameContext);

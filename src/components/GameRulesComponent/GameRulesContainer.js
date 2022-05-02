@@ -2,7 +2,7 @@ import React from 'react'
 import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer'
 import { useNavigate } from 'react-router-dom'
 
-
+// PANTALLA REGLAS
 export default function GameRulesContainer() {
     const navigate = useNavigate();
 

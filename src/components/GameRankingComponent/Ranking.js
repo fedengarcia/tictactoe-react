@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loader from '../LoaderComponent/Loader';
 
-// RANKING DE PERDEDORES
+// RANKING COMPONENT - DEPENDIENDO DEL RANKING TYPE SELECCIONADO
 export default function Ranking({loader,rankingList,rankingType}) {
     const [ranking, setRanking] = useState(rankingType);
 
@@ -22,9 +22,9 @@ export default function Ranking({loader,rankingList,rankingType}) {
 
     return (<>
             <div className="ranking-grid rankmob">
-                <div className="ranking-grid-item"><h2>Name</h2></div>
+                <div className="ranking-grid-item"><h2>Nombre</h2></div>
                 <div className="ranking-grid-item"><h2>{rankingType}</h2></div>
-                <div className="ranking-grid-item"><h2>Game Type</h2></div>
+                <div className="ranking-grid-item"><h2>Tipo de Juego</h2></div>
 
             </div>
             {loader === true ? <Loader/> 

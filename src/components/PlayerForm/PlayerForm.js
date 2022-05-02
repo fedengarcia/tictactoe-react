@@ -1,12 +1,14 @@
 import React, {useContext} from 'react';
-import {useNavigate} from 'react-router-dom';
 import {UseGameContext} from '../../context/GameContext';
+import ButtonPlayGame from '../GameButtonPlayComponent/ButtonPlayGame';
 
+
+// FORMULARIO DE JUGADOR/ES
 export default function PlayerForm ({setError}) {
 
-    const navigate = useNavigate();
     const {setPlayers,players,gameType} = useContext(UseGameContext)
 
+    // GUARDO DATOS DEL JUGADOR UNO
     const handlePlayerO_Data = (e) => {
         setPlayers({...players,playerOne:{
             name:e.target.value,
@@ -14,6 +16,7 @@ export default function PlayerForm ({setError}) {
         sessionStorage.setItem("playerOne", JSON.stringify({name:e.target.value}));
     }
     
+    // GUARDO DATOS DEL JUGADOR DOS
     const handlePlayerX_Data = (e) => {
         setPlayers({...players,playerTwo:{
             name:e.target.value,
@@ -21,40 +24,6 @@ export default function PlayerForm ({setError}) {
         sessionStorage.setItem("playerTwo",JSON.stringify({name:e.target.value}));
     }
 
-
-    const handlePlay = () => {
-        //VERIFICA TIPO DE JUEGO Y SI HAY NOMBRE DE JUGADOR
-        if(gameType === "Multiplayer"){
-            if((players.playerOne === undefined || players.playerTwo === undefined)){
-
-                setError("nombreVacio");
-
-            }else if((players.playerOne.name === "" || players.playerTwo.name === "") ){
-                
-                setError("nombreVacio");
-
-            }else if(players.playerOne.name === players.playerTwo.name){
-                setError("nombresIguales");
-            }else{
-                navigate("/Game/Multiplayer");
-            }
-
-        }else if(gameType === "Computer"){
-            if( players.playerOne  === undefined){
-
-                setError("nombreVacio");
-
-            }else if(players.playerOne.name  === ""){
-
-                setError("nombreVacio");
-
-            }else{
-                navigate("/Game/Computer");
-            }
-        }
-           
-
-    }
 
     return (<>
         <form>
@@ -78,10 +47,9 @@ export default function PlayerForm ({setError}) {
             </div> : <></>}           
 
         </form>
-        <div className='form-actions'>
-            <button onClick={() => navigate("/")}>VOLVER AL MENU</button>
-            <button onClick={handlePlay}>JUGAR</button>
-        </div>
+
+        <ButtonPlayGame setError={setError} players={players} gameType={gameType}/>
+
         </>
     )
 }

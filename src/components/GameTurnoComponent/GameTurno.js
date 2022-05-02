@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-
+// COMPONENTE TURNO - MUESTRA EL TURNO SIGUIENTE
 export default function GameTurno ({gameType,playerTwo,playerOne,turnoJugador}) {
 
     return (

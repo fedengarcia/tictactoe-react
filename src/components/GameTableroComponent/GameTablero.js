@@ -3,7 +3,7 @@ import GameTableroBox from "../GameTableroBoxComponent/GameTableroBox";
 import ActionViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 
 
-
+// COMPONENTE QUE CONSTRUYE GRID DEL TABLERO
 export default function GameTablero ({handlePlay,tablero}) {
 
     return (
