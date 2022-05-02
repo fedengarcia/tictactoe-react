@@ -11,10 +11,10 @@
 
 En el directiorio del proyecto, se puede ejectuar el siguiente comando:
 
-### `npm start`
+#### `npm start`
 
-Para ejecutar la app en modo de desarrollo.
-Abrir [http://localhost:3000](http://localhost:3000) para verla en el navegador.
+Para ejecutar la aplicacion en modo de desarrollo.
+Abrir [http://localhost:3000](http://localhost:3000) para visualizar la aplicacion en el navegador.
 
 
 ## TIC TAC TOE
