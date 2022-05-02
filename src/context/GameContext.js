@@ -29,7 +29,7 @@ export function GameContext ({children}) {
             modelDataRankingEmpates(item);
         })
 
-    }, [loadModel,winnersDB,loosersDB,empatesDB]);
+    }, [loadModel]);
 
 
     //DEVUELVO -1 SI NO EXISTE EL ITEM

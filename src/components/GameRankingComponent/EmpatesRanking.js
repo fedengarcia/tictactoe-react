@@ -15,12 +15,18 @@ export default function EmpatesRanking({empate,empatesRanking}) {
             {empate === true ? <Loader/> 
             : empatesRanking.map((empate,i) => 
                     <div key={i} className="result-grid rankmob">
-                        <div className="result-grid-item"><h3>{empate.name}</h3></div>
-                        <div className="result-grid-item"><h3>{empate.empates}</h3></div>
-                        <div className="result-grid-item"><h3>{empate.gameType}</h3></div>
-                        {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
-            </div>)
-            }
+                        
+                        {i<10 && 
+                            <>
+                                <div className="result-grid-item"><h3>{empate.name}</h3></div>
+                                <div className="result-grid-item"><h3>{empate.empates}</h3></div>
+                                <div className="result-grid-item"><h3>{empate.gameType}</h3></div>
+                                {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
+                            </>
+                        }
+                    
+                    </div>
+            )}
 
 
         </> 

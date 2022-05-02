@@ -15,12 +15,19 @@ export default function PointsRanking({loader,pointsRanking}) {
             {loader === true ? <Loader/> 
             : pointsRanking.map((player,i) => 
                     <div key={i} className="result-grid rankmob">
-                        <div className="result-grid-item"><h3>{player.name}</h3></div>
-                        <div className="result-grid-item"><h3>{player.points}</h3></div>
-                        <div className="result-grid-item"><h3>{player.gameType}</h3></div>
-                        {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
-            </div>)
-            }
+                         
+                    
+                    {i<10 && 
+                            <>
+                                <div className="result-grid-item"><h3>{player.name}</h3></div>
+                                <div className="result-grid-item"><h3>{player.points}</h3></div>
+                                <div className="result-grid-item"><h3>{player.gameType}</h3></div>
+                                {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
+                            </>
+                    }
+
+                    </div>
+            )}
 
 
         </> 

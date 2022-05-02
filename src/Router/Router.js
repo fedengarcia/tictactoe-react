@@ -5,7 +5,6 @@ import RankingContainer from '../components/GameRankingComponent/RankingContaine
 import TicTacToe from '../components/TicTacToe/TicTacToe';
 import PlayerInfoContainer from '../components/GetPlayersDataComponent/PlayerInfoContainer';
 import GameRulesContainer from '../components/GameRulesComponent/GameRulesContainer';
-import GameStatistics from '../components/GameStatisticsComponent/GameStatistics';
 
 const Router = () => {
 
@@ -18,7 +17,6 @@ const Router = () => {
                 <Route path='/Game/:gameType' element={<TicTacToe/>}/>
                 <Route path='/Rules' element={<GameRulesContainer/>}/>
                 <Route path='/Ranking' element={<RankingContainer/>}/>
-                <Route path='/EstadisticasAvanzadas' element={<GameStatistics/>}/>
             </Routes>
 
         </BrowserRouter>

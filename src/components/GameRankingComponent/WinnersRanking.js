@@ -14,13 +14,19 @@ export default function WinnersRanking({loader,winnersRanking}) {
             </div>
             {loader === true ? <Loader/> 
             : winnersRanking.map((winner,i) => 
+            
                     <div key={i} className="result-grid rankmob">
-                        <div className="result-grid-item"><h3>{winner.name}</h3></div>
-                        <div className="result-grid-item"><h3>{winner.wins}</h3></div>
-                        <div className="result-grid-item"><h3>{winner.gameType}</h3></div>
-                        {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
-            </div>)
-            }
+                         
+                        {i<10 && 
+                            <>
+                                <div className="result-grid-item"><h3>{winner.name}</h3></div>
+                                <div className="result-grid-item"><h3>{winner.wins}</h3></div>
+                                <div className="result-grid-item"><h3>{winner.gameType}</h3></div>
+                                {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
+                            </>
+                        }   
+                </div>
+            )}
 
 
         </> 

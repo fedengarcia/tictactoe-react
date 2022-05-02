@@ -15,12 +15,18 @@ export default function LoosersRanking({loader,loosersRanking}) {
             {loader === true ? <Loader/> 
             : loosersRanking.map((looser,i) => 
                     <div key={i} className="result-grid rankmob">
-                        <div className="result-grid-item"><h3>{looser.name}</h3></div>
-                        <div className="result-grid-item"><h3>{looser.losses}</h3></div>
-                        <div className="result-grid-item"><h3>{looser.gameType}</h3></div>
-                        {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
-            </div>)
-            }
+                        
+                        {i<10 && 
+                            <>
+                                <div className="result-grid-item"><h3>{looser.name}</h3></div>
+                                <div className="result-grid-item"><h3>{looser.losses}</h3></div>
+                                <div className="result-grid-item"><h3>{looser.gameType}</h3></div>
+                                {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
+                            </>
+                        }          
+            
+                    </div>
+            )}
 
 
         </> 

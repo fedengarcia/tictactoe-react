@@ -10,7 +10,7 @@ import PointsRanking from './PointsRanking';
 
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
-    const [rankingType,setRankingType] = useState("winners");
+    const [rankingType,setRankingType] = useState("Ganadores");
     const {pointsRanking,
             winnersRanking,
             loosersRanking,
@@ -23,7 +23,6 @@ export default function RankingContainer () {
             loadModel} = useContext(UseGameContext);
 
     const navigate = useNavigate();
-
     useEffect(() => {
         getWinners().then(res => {
             setWinnersDB(res);
@@ -42,7 +41,7 @@ export default function RankingContainer () {
             setLoadModel(!loadModel);
             setLoader(false)
         });
-
+// eslint-disable-next-line
     }, []);
 
 
@@ -51,10 +50,7 @@ export default function RankingContainer () {
         if(value === "menu"){
             clearRanking();
             navigate("/");
-        }else{
-            navigate("/EstadisticasAvanzadas");
         }
-
     }
 
     const handleRanking = (type) => {
@@ -65,25 +61,24 @@ export default function RankingContainer () {
     return (
     <ActionsViewContainer>
         <div className="rank-title">
-            <h1>Ranking por puntos</h1>
+            <h1>{`Ranking de ${rankingType}`}</h1>
         </div>
 
         <div className="ranking-container">
             <div className="ranking-nav">
-            <button onClick={() => handleRanking("points")}>Puntos</button>
-                <button onClick={() => handleRanking("winners")}>Ganadores</button>
-                <button onClick={() => handleRanking("loosers")}>Perdedores</button>
-                <button onClick={() => handleRanking("empates")}>Empates</button>
+            <button onClick={() => handleRanking("Puntos")}>Puntos</button>
+                <button onClick={() => handleRanking("Ganadores")}>Ganadores</button>
+                <button onClick={() => handleRanking("Perdedores")}>Perdedores</button>
+                <button onClick={() => handleRanking("Empates")}>Empates</button>
             </div>
 
-            {rankingType === "points" ? <PointsRanking loader={loader} pointsRanking={pointsRanking}/> : <></>}
-            {rankingType === "winners" ? <WinnersRanking loader={loader} winnersRanking={winnersRanking}/> : <></>}
-            {rankingType === "loosers" ? <LoosersRanking loader={loader} loosersRanking={loosersRanking}/> : <></>}
-            {rankingType === "empates" ? <EmpatesRanking loader={loader} empatesRanking={empatesRanking}/> : <></>}
+            {rankingType === "Puntos" ? <PointsRanking loader={loader} pointsRanking={pointsRanking}/> : <></>}
+            {rankingType === "Ganadores" ? <WinnersRanking loader={loader} winnersRanking={winnersRanking}/> : <></>}
+            {rankingType === "Perdedores" ? <LoosersRanking loader={loader} loosersRanking={loosersRanking}/> : <></>}
+            {rankingType === "Empates" ? <EmpatesRanking loader={loader} empatesRanking={empatesRanking}/> : <></>}
             
             <div className="ranking-action-button">
                 <button onClick={() => handleClick("menu")}>VOLVER AL MENU</button>
-                {/* <button onClick={handleClick}>ESTADISTICAS AVANZADAS</button> */}
             </div>
             
         </div>

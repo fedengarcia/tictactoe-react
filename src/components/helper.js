@@ -92,12 +92,12 @@ export function checkGameResult (tablero,playerOne,playerTwo, gameType) {
                 }else{
                     return ({
                         winner:{
-                            name: playerOne.name,
+                            name: playerTwo.name,
                             points: points,
                             playerType: tablero[a],
                         },
                         looser:{
-                            name: playerTwo.name,
+                            name: playerOne.name,
                             playerType: "O",
                         }})   
                         
