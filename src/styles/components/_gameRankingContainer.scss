@@ -13,7 +13,6 @@
     flex-direction: column;
     border-radius: 2em;
     border: 2px solid #1f1f70;
-    font-family: Arial, Helvetica, sans-serif;
     box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
     background-color: rgb(234, 190, 135);
 
@@ -29,14 +28,8 @@
 
     h2{
         margin-top: 1em;
-        font-size: 3vh;
-        font-family: Arial, Helvetica, sans-serif;
-
     }
-    h3{
-        font-family: Arial, Helvetica, sans-serif;
 
-    }
     .ranking-grid, .result-grid{
         width: 80%;
         display: grid;

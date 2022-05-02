@@ -1,0 +1,54 @@
+
+@media (max-width:700px){
+    .player-form-container{
+        width: 80%;
+
+        .form-actions{
+            flex-direction: column-reverse;
+            button{
+                width: 80%;
+            }
+        }
+       
+    }
+
+    .game-rules-container{
+        margin: 2em;
+        width: auto;
+    }
+
+    .game-container{
+
+        .game-header{
+            justify-content: center;
+            flex-wrap: wrap;
+            h1{
+                margin-right: 1em;
+            }
+        }
+    }
+
+    .players-container, .turno-container{
+        
+        h2{
+            font-size: 3vh !important;
+        }
+    }
+
+}
+
+
+
+@media (max-width:500px){
+
+    .tablero-container{
+        .tablero-grid {
+            .tablero-box{
+                width: 7em;
+                height: 7em;
+            }
+        }
+    }
+
+    
+}

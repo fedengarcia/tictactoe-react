@@ -12,8 +12,8 @@ export default function GameRulesContainer() {
     }
 
     return (<ActionViewContainer>
+        <h1>REGLAS</h1>
         <div className="game-rules-container">
-            <h2>REGLAS</h2>
             <p> Se establecen las siguientes reglas para que el jugador sume puntos dependiendo de como se ejecuta la jugada.</p>
             <ul>
                 <li>Tres en Linea HORIZONTAL: 2 puntos</li>

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {NavLink, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {UseGameContext} from '../../context/GameContext';
 
 export default function PlayerForm ({setError}) {
@@ -79,8 +79,8 @@ export default function PlayerForm ({setError}) {
 
         </form>
         <div className='form-actions'>
-            <NavLink to="/" className="nav-link-button"><button>VOLVER AL MENU</button></NavLink>
-            <button className="boton-validar" onClick={handlePlay}>JUGAR</button>
+            <button onClick={() => navigate("/")}>VOLVER AL MENU</button>
+            <button onClick={handlePlay}>JUGAR</button>
         </div>
         </>
     )

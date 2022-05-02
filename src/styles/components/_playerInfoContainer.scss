@@ -6,7 +6,6 @@
     width: 50%;
     border: 2px solid #1f1f70;
     background-color: rgb(234 190 135);
-    font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
     box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
 
@@ -34,12 +33,11 @@
 
     .form-actions{
         background-color: transparent;
-
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-
+        flex-wrap: wrap;
        
 
     }
@@ -54,6 +52,5 @@
         font-size: 3vh;
         padding: 1em;
         transition: all 1s ease;
-        font-family: Arial, Helvetica, sans-serif;
     }
 }
