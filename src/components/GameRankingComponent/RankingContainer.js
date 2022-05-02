@@ -3,11 +3,8 @@ import { getEmpates, getLoosers, getWinners } from "../../firebase/FirebaseClien
 import ActionsViewContainer from '../GameViewActionsTemplate/ActionsViewContainer';
 import {useNavigate} from 'react-router-dom';
 import { UseGameContext } from "../../context/GameContext";
-import WinnersRanking from "./WinnersRanking";
-import LoosersRanking from "./LoosersRanking";
-import EmpatesRanking from "./EmpatesRanking";
-import PointsRanking from './PointsRanking';
 import NavbarRanking from "./NavbarRanking";
+import Ranking from "./Ranking";
 
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
@@ -24,6 +21,8 @@ export default function RankingContainer () {
             loadModel} = useContext(UseGameContext);
 
     const navigate = useNavigate();
+
+    // GUARDO DATOS DE PARTIDAS EN SUS RESPECTIVOS ARRAYS Y MODELADO DE DATOS PARA EL RANKING
     useEffect(() => {
         getWinners().then(res => {
             setWinnersDB(res);
@@ -68,10 +67,10 @@ export default function RankingContainer () {
         <div className="ranking-container">
             <NavbarRanking handleRanking={handleRanking}/>
 
-            {rankingType === "Puntos" ? <PointsRanking loader={loader} pointsRanking={pointsRanking}/> : <></>}
-            {rankingType === "Ganadores" ? <WinnersRanking loader={loader} winnersRanking={winnersRanking}/> : <></>}
-            {rankingType === "Perdedores" ? <LoosersRanking loader={loader} loosersRanking={loosersRanking}/> : <></>}
-            {rankingType === "Empates" ? <EmpatesRanking loader={loader} empatesRanking={empatesRanking}/> : <></>}
+            {rankingType === "Puntos" ? <Ranking loader={loader} rankingList={pointsRanking} rankingType={rankingType}/> : <></>}
+            {rankingType === "Ganadores" ? <Ranking loader={loader} rankingList={winnersRanking} rankingType={rankingType} /> : <></>}
+            {rankingType === "Perdedores" ? <Ranking loader={loader} rankingList={loosersRanking} rankingType={rankingType}/> : <></>}
+            {rankingType === "Empates" ? <Ranking loader={loader} rankingList={empatesRanking} rankingType={rankingType}/> : <></>}
             
             <div className="ranking-action-button">
                 <button onClick={() => handleClick("menu")}>VOLVER AL MENU</button>
