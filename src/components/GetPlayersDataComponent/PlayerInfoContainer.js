@@ -10,6 +10,7 @@ export default function PlayerInfoContainer () {
     const {setGameType} = useContext(UseGameContext);
     const [error,setError] =  useState(false);
 
+
     useEffect(() => {
         setGameType(gameType)
         sessionStorage.setItem("gameType", JSON.stringify({gameType}));

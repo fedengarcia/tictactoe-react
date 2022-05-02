@@ -2,31 +2,31 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
 
-export default function ButtonPlayGame({gameType,players,setError}) {
+export default function ButtonPlayGame({gameType,setError,playerOne,playerTwo}) {
     const navigate = useNavigate();
-    //VERIFICA TIPO DE JUEGO Y SI HAY NOMBRE DE JUGADOR LO EJECUTA
+
+
+    //VERIFICA TIPO DE JUEGO Y NOMBRES PARA EJECUTAR EL JUEGO
     const handlePlay = () => {
         if(gameType === "Multiplayer"){
-            if((players.playerOne === undefined || players.playerTwo === undefined)){
-
+            if((playerOne.name === undefined || playerTwo.name === undefined)){
                 setError("nombreVacio");
 
-            }else if((players.playerOne.name === "" || players.playerTwo.name === "") ){
-                
+            }else if((playerOne.name === "" || playerTwo.name === "") ){
                 setError("nombreVacio");
 
-            }else if(players.playerOne.name === players.playerTwo.name){
+            }else if(playerOne.name === playerTwo.name){
                 setError("nombresIguales");
             }else{
                 navigate("/Game/Multiplayer");
             }
 
         }else if(gameType === "Computer"){
-            if( players.playerOne  === undefined){
+            if( playerOne.name  === undefined){
 
                 setError("nombreVacio");
 
-            }else if(players.playerOne.name  === ""){
+            }else if(playerOne.name  === ""){
 
                 setError("nombreVacio");
 

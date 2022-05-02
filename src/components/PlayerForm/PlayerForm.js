@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext,useEffect, useState} from 'react';
 import {UseGameContext} from '../../context/GameContext';
 import ButtonPlayGame from '../GameButtonPlayComponent/ButtonPlayGame';
 
@@ -7,6 +7,13 @@ import ButtonPlayGame from '../GameButtonPlayComponent/ButtonPlayGame';
 export default function PlayerForm ({setError}) {
 
     const {setPlayers,players,gameType} = useContext(UseGameContext)
+    const [playerOne, setPlayerOne] = useState("");
+    const [playerTwo, setPlayerTwo] = useState("");
+
+    useEffect(() => {
+        setPlayerOne(JSON.parse(sessionStorage.getItem("playerOne")));
+        setPlayerTwo(JSON.parse(sessionStorage.getItem("playerTwo")));
+    }, [players]);
 
     // GUARDO DATOS DEL JUGADOR UNO
     const handlePlayerO_Data = (e) => {
@@ -24,11 +31,9 @@ export default function PlayerForm ({setError}) {
         sessionStorage.setItem("playerTwo",JSON.stringify({name:e.target.value}));
     }
 
-
+    
     return (<>
         <form>
-        {gameType === "Multiplayer" ? <h2>Ingrese los nombres de los jugadores</h2> : <h2>Ingrese nombre del jugador</h2>}
-
             <div className="input-span">
                     <input className="form-input" 
                     type="text" 
@@ -48,7 +53,7 @@ export default function PlayerForm ({setError}) {
 
         </form>
 
-        <ButtonPlayGame setError={setError} players={players} gameType={gameType}/>
+        <ButtonPlayGame setError={setError} gameType={gameType} playerOne={playerOne} playerTwo={playerTwo}/>
 
         </>
     )
