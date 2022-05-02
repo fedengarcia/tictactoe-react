@@ -35,11 +35,30 @@
         }
     }
 
+    .ranking-navbar-container{
+        .nav-toggle-button{
+            display:block;
+        }
+
+        .ranking-navbar{
+            display: none;
+        }
+
+        .ranking-navbar-collapsed{
+            transition: all 1s ease-in;
+            button{
+                font-size: 2vh !important;
+
+            }
+        }
+    }
+
+    
 }
 
 
 
-@media (max-width:500px){
+@media (max-width:550px){
 
     .tablero-container{
         .tablero-grid {
@@ -50,5 +69,35 @@
         }
     }
 
-    
+
+    .ranking-navbar-container{
+        
+
+        .ranking-navbar-collapsed{
+            .ranking-navbar-nav{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            
+            button{
+                font-size: 1.8vh !important;
+
+            }
+        }
+    }
+
+
+    .result-grid{
+        .result-grid-item{
+            h3{
+                font-size: 1.5vh;
+            }
+        }
+    }
+
+
+   
 }

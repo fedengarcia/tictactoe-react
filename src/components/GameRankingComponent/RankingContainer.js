@@ -7,6 +7,7 @@ import WinnersRanking from "./WinnersRanking";
 import LoosersRanking from "./LoosersRanking";
 import EmpatesRanking from "./EmpatesRanking";
 import PointsRanking from './PointsRanking';
+import NavbarRanking from "./NavbarRanking";
 
 export default function RankingContainer () {
     const [loader, setLoader] = useState(true);
@@ -65,12 +66,7 @@ export default function RankingContainer () {
         </div>
 
         <div className="ranking-container">
-            <div className="ranking-nav">
-            <button onClick={() => handleRanking("Puntos")}>Puntos</button>
-                <button onClick={() => handleRanking("Ganadores")}>Ganadores</button>
-                <button onClick={() => handleRanking("Perdedores")}>Perdedores</button>
-                <button onClick={() => handleRanking("Empates")}>Empates</button>
-            </div>
+            <NavbarRanking handleRanking={handleRanking}/>
 
             {rankingType === "Puntos" ? <PointsRanking loader={loader} pointsRanking={pointsRanking}/> : <></>}
             {rankingType === "Ganadores" ? <WinnersRanking loader={loader} winnersRanking={winnersRanking}/> : <></>}

@@ -8,13 +8,11 @@
     background-color: rgb(234 190 135);
     overflow: hidden;
     box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
-
+    
 
     form{
         background-color: rgb(234 190 135);
-        width: 90%;
         padding: 1em;
-        
         h2{
             padding: 1em;
             background-color: transparent;
@@ -22,7 +20,6 @@
 
         .input-span {
             
-            width: auto;
             margin: 1em;
             input{
                 height: 3vh;

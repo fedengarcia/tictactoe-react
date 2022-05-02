@@ -1,0 +1,23 @@
+.ranking-navbar-container{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .ranking-navbar, .ranking-navbar-collapsed{
+        background-color: transparent; 
+        .ranking-navbar-nav{
+            background-color: transparent;
+        }   
+    }
+
+    .ranking-navbar{
+        display: block;
+    }
+
+
+    .nav-toggle-button{
+        display: none;
+    }
+
+}

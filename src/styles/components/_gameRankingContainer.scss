@@ -6,7 +6,7 @@
 
 .ranking-container{
     width: 80%;
-    height: 60vh;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,6 +15,8 @@
     border: 2px solid #1f1f70;
     box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
     background-color: rgb(234, 190, 135);
+    transition: 1s ease;
+
 
     .ranking-nav{
         background-color: transparent;
@@ -43,17 +45,16 @@
 
     .ranking-grid-item, .result-grid-item, h2, h3,.rank-title{
         background-color: transparent;
+        font-size: 2vh;
 
     }
 
     .result-grid{
-        margin-top: 1em;
-       
+        margin-top: 0.8em;   
     }
 }
 
 .ranking-action-button{
-    margin-top: 2em;
     display: flex;
     flex-direction: row;
     background-color: transparent;

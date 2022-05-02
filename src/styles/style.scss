@@ -1,5 +1,5 @@
 @import 'imports';
-  
+
 *{
     background-color: rgb(236, 203, 161);
     padding: 0;
@@ -16,9 +16,10 @@ h1{
 
 h2{
     font-size: 2vh;
+    text-align: center;
 }
 
-button{
+button {
     font-size: 2.5vh;
     margin: 0.5em; 
     padding: 0.3em;
@@ -34,4 +35,6 @@ button{
         background-color: rgb(235, 107, 107);
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     }
+
 }
+
