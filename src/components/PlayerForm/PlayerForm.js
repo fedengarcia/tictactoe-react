@@ -25,7 +25,7 @@ export default function PlayerForm ({setError}) {
     const handlePlay = () => {
         //VERIFICA TIPO DE JUEGO Y SI HAY NOMBRE DE JUGADOR
         if(gameType === "Multiplayer"){
-            if((players.playerOne === undefined || players.playerTwo === undefined)){
+            if((players.playerOne === {} || players.playerTwo === {})){
 
                 setError("nombreVacio");
 
@@ -40,7 +40,7 @@ export default function PlayerForm ({setError}) {
             }
 
         }else if(gameType === "Computer"){
-            if( players.playerOne  === undefined){
+            if( players.playerOne  === {}){
 
                 setError("nombreVacio");
 
