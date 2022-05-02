@@ -3,8 +3,7 @@ import { getFirestore } from "firebase/firestore"
 import { query, collection, addDoc, getDocs, where } from "firebase/firestore";
 
 
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// FIREBASE CONFIGURACION
 const firebaseConfig = {
     apiKey: "AIzaSyAO4t0MLtzqz4AbmgSimWMBwgq5-zVwjj0",
     authDomain: "registerloginapp-481f7.firebaseapp.com",
@@ -21,7 +20,7 @@ const database = getFirestore(app);
 
 
 
-
+// OBTENGO UN JUGADOR
 export const getPlayer = async(playerName) => {
   try{
     const playerDoc = await getDocs(query(collection(database,"winners"),where("name","==",playerName)));
@@ -33,6 +32,7 @@ export const getPlayer = async(playerName) => {
     
 }
 
+// AGREGAR DOCUMENTOS DE EMPATE POR JUGADOR
 export const addEmpateDoc = async (empate,gameType) => {
   const playerEmpate1Doc = { 
       name:empate.playerOne,
@@ -53,7 +53,7 @@ export const addEmpateDoc = async (empate,gameType) => {
   }
 }
 
-
+// AGREGAR DOCUMENTO DE JUGADOR QUE PERDIO
 export const addLooserPlayer =  async (player,gameType) => {
   const looserPlayerDoc = {
     name: player.name,
@@ -70,7 +70,7 @@ export const addLooserPlayer =  async (player,gameType) => {
     }
 }
 
-
+// AGREGAR DOCUMENTO DE JUGADOR QUE GANO
 export const addWinnerPlayer = async (player,gameType) => {
     const winnerPlayerDoc = {
         name: player.name,
@@ -89,6 +89,7 @@ export const addWinnerPlayer = async (player,gameType) => {
 
 }
 
+// OBTENER GANADORES
 export const getWinners = async () => {
   try{
     const winnersDoc = await getDocs(query(collection(database,"winners"))); //,limit(limite))
@@ -100,7 +101,7 @@ export const getWinners = async () => {
 
 }
 
-
+// OBTENER PERDEDORES
 export const getLoosers = async () => {
   try{
     const winnersDoc = await getDocs(query(collection(database,"loosers"))); //,limit(limite))
@@ -112,6 +113,7 @@ export const getLoosers = async () => {
 
 }
 
+// OBTENER EMPATES
 export const getEmpates = async () => {
   try{
     const winnersDoc = await getDocs(query(collection(database,"empates"))); //,limit(limite))
