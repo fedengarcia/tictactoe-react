@@ -41,7 +41,7 @@ export default function TicTacToe () {
     }, []);
 
 
-    //MOVIMIENTO DE LA COMPUTADORA -- Si hay tiempo agregar IA
+    //MOVIMIENTO DE LA COMPUTADORA
     useEffect(() => {            
         if(turnoJugador === "X" && type.gameType==="Computer"){
             var tableroCopy =  tablero.slice();
