@@ -9,7 +9,6 @@ export default function PointsRanking({loader,pointsRanking}) {
                 <div className="ranking-grid-item"><h2>Name</h2></div>
                 <div className="ranking-grid-item"><h2>Points</h2></div>
                 <div className="ranking-grid-item"><h2>Game Type</h2></div>
-                {/* <div className="winners-grid-item-title"><h2>PlayerType</h2></div> */}
 
             </div>
             {loader === true ? <Loader/> 
@@ -22,7 +21,6 @@ export default function PointsRanking({loader,pointsRanking}) {
                                 <div className="result-grid-item"><h3>{player.name}</h3></div>
                                 <div className="result-grid-item"><h3>{player.points}</h3></div>
                                 <div className="result-grid-item"><h3>{player.gameType}</h3></div>
-                                {/* <div className="winners-grid-item-player"><h2>{winner.playerType}</h2></div> */}
                             </>
                     }
 
