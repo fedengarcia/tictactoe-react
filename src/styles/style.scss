@@ -1,11 +1,9 @@
 @import 'imports';
 
 *{
-    background-color: rgb(236, 203, 161);
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 h1{
@@ -24,16 +22,17 @@ button {
     margin: 0.5em; 
     padding: 0.3em;
     cursor: pointer;
-    border: 2px solid #1f1f70;
-    border-radius: 1em;
+    // border: 2px solid #1f1f70;
+    border-radius: 8px;
     text-align: center;
-    background-color: rgb(236, 203, 161);
     transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     font-weight: 700;
-
+    background-color: rgb(215, 215, 215);
+    font-family: 'Handjet';
     &:hover{
-        background-color: rgb(235, 107, 107);
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        background-color: rgba(255, 255, 255, 0.752);
+        color: green;
     }
 
 }

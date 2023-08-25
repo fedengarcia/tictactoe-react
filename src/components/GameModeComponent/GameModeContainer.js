@@ -16,7 +16,7 @@ export default function GameModeContainer () {
     return(<ActionsViewContainer>
         
         <div className='game-mode'>
-            <h1>Elige el modo de juego</h1>
+            <h1>Tic Tac Toe</h1>
             <NavLink  to="/PlayerInfo/Multiplayer" className="nav-link-button">Multiplayer</NavLink>
             <NavLink  to="/PlayerInfo/Computer" className="nav-link-button">Computer</NavLink>
             <NavLink  to="/Rules" className="nav-link-button">Reglas de puntos</NavLink>
