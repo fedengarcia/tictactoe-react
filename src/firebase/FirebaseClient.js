@@ -5,7 +5,7 @@ import { query, collection, addDoc, getDocs, where } from "firebase/firestore";
 
 // FIREBASE CONFIGURACION
 const firebaseConfig = {
-    apiKey: "AIzaSyAO4t0MLtzqz4AbmgSimWMBwgq5-zVwjj0",
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
     authDomain: "registerloginapp-481f7.firebaseapp.com",
     projectId: "registerloginapp-481f7",
     storageBucket: "registerloginapp-481f7.appspot.com",
