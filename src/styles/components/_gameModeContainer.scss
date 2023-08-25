@@ -5,13 +5,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid #1f1f70;
+    // border: 2px solid #1f1f70;
+    background-color: transparent;
     padding: 3em;
     border-radius: 2em;
-    background-color: rgb(234 190 135);
-    box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
+    // background-color: rgb(234 190 135);
+    // box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
 
     cursor: pointer;
+
+    h1{
+        font-family: 'Handjet';
+        font-weight: bold;
+        font-size: 4vw;
+    }
 
     .nav-link-button{
         font-size: 3vh;
@@ -19,17 +26,18 @@
         color:inherit;
         margin: 1em;
         padding: 0.8em;
-        border: 2px solid #1f1f70;
+        // border: 2px solid #1f1f70;
         border-radius: 1em;
         text-align: center;
         width: 80%;
-        background-color: rgb(236, 203, 161);
         transition: all 0.3s ease;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         font-weight: 700;
-
+        background-color: rgb(215, 215, 215);
+        font-family: 'Handjet';
         &:hover{
-            background-color: rgb(235, 107, 107);
-            box-shadow: rgb(38, 57, 77) 0px 10px 10px -10px;
+            background-color: rgba(255, 255, 255, 0.752);
+            color: green;
         }
     }
 }
