@@ -5,7 +5,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
+    background-image: 'url(../../../public/forest.jpg) !important';
+    background-position: 'center center';
+    background-repeat: 'no-repeat';
+    background-size: '100% 100%';
+    overflow: 'hidden';
 
+    h1{
+        font-family: 'Handjet';
+        font-size: 50px;
+    }
     a{
         background-color: transparent;
 

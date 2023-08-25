@@ -3,28 +3,38 @@
 .player-form-container{
     border-radius: 2em;
     text-align: center;
-    width: 50%;
-    border: 2px solid #1f1f70;
-    background-color: rgb(234 190 135);
+    width: 20%;
+    padding: 3em;
     overflow: hidden;
-    box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
-    
+    border: 1px solid rgb(188, 188, 188);
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    text-align: left;
 
     form{
-        background-color: rgb(234 190 135);
         padding: 1em;
         h2{
             padding: 1em;
             background-color: transparent;
         }
 
+        label{
+            margin-bottom: 2em !important;
+            font-size: 15px;
+            color: brown;
+        }
+
         .input-span {
-            
-            margin: 1em;
+            font-family: 'Handjet';
+            margin-top: 0.5em;
+            margin-bottom: 2em;
             input{
+                font-family: 'Handjet';
+                color: brown;
+                font-size: 25px;
                 height: 3vh;
                 width: 100%;
             }
+
         }
     }
 

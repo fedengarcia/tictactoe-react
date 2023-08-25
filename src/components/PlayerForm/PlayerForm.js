@@ -34,6 +34,7 @@ export default function PlayerForm ({setError}) {
     
     return (<>
         <form>
+            <label>Ingrse nombre jugador 1:</label>
             <div className="input-span">
                     <input className="form-input" 
                     type="text" 
@@ -42,14 +43,19 @@ export default function PlayerForm ({setError}) {
                     onChangeCapture={handlePlayerO_Data}
                     />
             </div>
-            {gameType === "Multiplayer" ? <div className="input-span">
-                    <input className="form-input" 
-                    type="text" 
-                    placeholder='Nombre Jugador X'
-                    id="playerXNameid"
-                    onChangeCapture={handlePlayerX_Data}
-                    />	
-            </div> : <></>}           
+            {gameType === "Multiplayer" ?
+                <> 
+                    <label>Ingrse nombre jugador 2:</label>
+                    <div className="input-span">
+                            <input className="form-input" 
+                            type="text" 
+                            placeholder='Nombre Jugador X'
+                            id="playerXNameid"
+                            onChangeCapture={handlePlayerX_Data}
+                            />	
+                    </div> 
+                </>
+            : <></>}           
 
         </form>
 
