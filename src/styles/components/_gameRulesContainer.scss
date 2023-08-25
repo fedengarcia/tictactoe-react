@@ -1,15 +1,18 @@
 .game-rules-container{
     width: 50%;
-    box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
-    border: 2px solid #1f1f70;
     border-radius: 2em;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(234, 190, 135);
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border: 1px solid rgb(188, 188, 188);
+    padding: 2em;
+    background-color: #ffffffeb;
+
     h1{
+        font-family: 'Handjet';
         text-align: center;
         margin: 1em;
         background-color: transparent;
@@ -27,10 +30,10 @@
         background-color: transparent;
 
         li{
-            margin-bottom: 0.5em;
+            margin-bottom: 2em;
             font-size: 2.5vh;
             background-color: transparent;
-
+            
         }
         :last-child{
             margin-bottom: 1em;

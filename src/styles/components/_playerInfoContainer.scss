@@ -9,6 +9,7 @@
     border: 1px solid rgb(188, 188, 188);
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     text-align: left;
+    background-color: #ffffffeb;
 
     form{
         padding: 1em;
@@ -20,7 +21,7 @@
         label{
             margin-bottom: 2em !important;
             font-size: 15px;
-            color: brown;
+            color: #a06fb0 !important;
         }
 
         .input-span {
@@ -29,7 +30,7 @@
             margin-bottom: 2em;
             input{
                 font-family: 'Handjet';
-                color: brown;
+                color: #a06fb0 !important;
                 font-size: 25px;
                 height: 3vh;
                 width: 100%;

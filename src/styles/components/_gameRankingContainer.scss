@@ -6,16 +6,17 @@
 
 .ranking-container{
     width: 80%;
-    height: auto;
+    height: 80vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
     border-radius: 2em;
-    border: 2px solid #1f1f70;
-    box-shadow: rgb(49, 39, 25) 0px 20px 30px -10px;
-    background-color: rgb(234, 190, 135);
     transition: 1s ease;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border: 1px solid rgb(188, 188, 188);
+    background-color: #ffffffeb;
+
 
 
     .ranking-nav{
@@ -30,9 +31,13 @@
 
     h2{
         margin-top: 1em;
+        font-family: 'Handjet';
+
     }
 
     .ranking-grid, .result-grid{
+        font-family: 'Handjet';
+
         width: 80%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -44,6 +49,8 @@
     }
 
     .ranking-grid-item, .result-grid-item, h2, h3,.rank-title{
+        font-family: 'Handjet';
+
         background-color: transparent;
         font-size: 2vh;
 
@@ -55,10 +62,12 @@
 }
 
 .ranking-action-button{
+    padding: 2em;
     display: flex;
     flex-direction: row;
     background-color: transparent;
     button{
         margin-top: 4em;
+        
     }
 }
