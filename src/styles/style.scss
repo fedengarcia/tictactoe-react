@@ -6,6 +6,14 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body{
+    background-image: url('../../public/background.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
 h1{
     font-size: 4vh;
     background-color: transparent;
@@ -30,9 +38,10 @@ button {
     font-weight: 700;
     background-color: rgb(215, 215, 215);
     font-family: 'Handjet';
+    border: 1px solid transparent;
     &:hover{
-        background-color: rgba(255, 255, 255, 0.752);
-        color: green;
+        background-color: #a06fb0 !important;
+        border: 1px solid black;
     }
 
 }
